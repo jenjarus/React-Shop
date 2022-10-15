@@ -1,0 +1,25 @@
+.input-qty {
+  @include flex;
+
+  &__minus, &__plus {
+    width: 41px;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+
+    svg {
+      width: 16px;
+      height: auto;
+    }
+  }
+
+  &__input {
+    flex: 1;
+    height: 41px;
+    border-color: $red_color;
+    border-left: none;
+    border-right: none;
+  }
+}

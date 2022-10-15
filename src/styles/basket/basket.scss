@@ -1,0 +1,16 @@
+.basket-items {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 40px 0 0;
+}
+
+.basket-total {
+  font-size: 24px;
+  line-height: 28px;
+  text-align: right;
+
+  &__bold {
+    font-weight: 700;
+  }
+}

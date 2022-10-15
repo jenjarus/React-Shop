@@ -1,0 +1,74 @@
+@mixin blockPadding() {
+  padding: 0 15px;
+}
+
+.basket-item {
+  &__wrapper {
+    @include flex;
+    position: relative;
+    padding: 30px 0;
+    background: $background_color;
+    border-bottom: 1px solid $red_color;
+  }
+
+  &:last-child &__wrapper {
+    border-bottom: none;
+  }
+
+  &__image {
+    width: 100px;
+
+    img {
+      margin: 0 auto;
+      max-height: 100px;
+    }
+  }
+
+  &__name {
+    flex: 1;
+    @include blockPadding();
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  &__price {
+    width: 125px;
+    @include blockPadding();
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+  }
+
+  &__qty {
+    width: 180px;
+    @include blockPadding();
+    .input-qty__input {
+      text-align: center;
+    }
+  }
+
+  &__delete {
+    .btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+
+      svg {
+        width: 20px;
+        height: auto;
+      }
+    }
+  }
+
+  &__total {
+    width: 150px;
+    @include blockPadding();
+    font-size: 24px;
+    line-height: 28px;
+    color: $dark_red_color;
+    text-align: center;
+  }
+}

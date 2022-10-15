@@ -1,0 +1,112 @@
+header {
+  background: $background_color;
+  padding: 20px 0;
+
+  .header {
+    @include flex;
+
+    &-logo {
+      svg {
+        width: 50px;
+      }
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      &__highlight {
+        color: $red_color;
+      }
+    }
+
+    &-tel {
+      &__link {
+        font-size: 18px;
+        line-height: 24px;
+        color: $black_color;
+        text-decoration: none;
+        transition: $transition_link;
+
+        &:hover {
+          color: $dark_red_color;
+        }
+      }
+    }
+  }
+}
+
+.header-nav {
+  background: linear-gradient(to left, $dark_red_color 50%, $red_color 50%);
+
+  &__wrapper {
+    @include flex;
+  }
+
+  &__items {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background: $red_color;
+    margin: 0 -10px;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 0 10px;
+
+    a {
+      font-size: 14px;
+      line-height: 18px;
+        color: #fff;
+        text-decoration: none;
+
+      &.active, &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background: $dark_red_color;
+    margin: 0 -15px;
+
+    .header-nav__tab {
+      padding: 0 15px;
+
+      &-link {
+        font-size: 14px;
+        line-height: 18px;
+        color: #fff;
+        white-space: nowrap;
+        text-decoration: none;
+        transition: $transition_link;
+
+        svg {
+          width: 16px;
+          height: auto;
+          margin-right: 10px;
+          vertical-align: text-top;
+        }
+
+        &:hover {
+          color: $black_color;
+        }
+      }
+
+      &--favorite {
+        width: 70px;
+      }
+
+      &--cart {
+        width: 150px;
+        text-align: right;
+      }
+    }
+  }
+}

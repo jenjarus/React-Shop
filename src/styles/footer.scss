@@ -1,0 +1,11 @@
+footer {
+  padding: 20px 0;
+  border-top: 5px solid $red_color;
+  background: $background_grey;
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
