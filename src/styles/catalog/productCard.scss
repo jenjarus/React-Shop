@@ -83,3 +83,21 @@
     }
   }
 }
+
+.modal-window {
+  &__name-product {
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__buttons {
+    @include flex;
+    padding-top: 20px;
+    margin: 0 -15px;
+
+    .btn {
+      margin: 0 15px;
+    }
+  }
+}

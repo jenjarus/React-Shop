@@ -26,7 +26,7 @@ const Header = () => {
                             <a href="tel:88005553535" className="header-tel__link">8 (800) 555 35 35</a>
                         </div>
                         <div className="header-callback">
-                            <a href="$" className="btn">Заказать звонок</a>
+                            <a href="#" className="btn">Заказать звонок</a>
                         </div>
                     </div>
                 </div>
