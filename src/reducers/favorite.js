@@ -2,7 +2,7 @@ const initialState = {
     items: [],
 };
 
-export default function basket (state = initialState, action) {
+export default function favorite (state = initialState, action) {
     switch(action.type) {
         case 'SET_PRODUCT_TO_FAVORITE':
             const newItems = (state.items.length && state.items.find((id) => id === action.id)) ? state.items : [...state.items, action.id];

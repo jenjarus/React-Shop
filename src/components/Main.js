@@ -3,6 +3,8 @@ import Header from './Header';
 import Catalog from './catalog/Catalog';
 import Basket from './basket/Basket';
 import Favorite from "./favorite/Favorite";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import NotFound from './Other/NotFound';
 import Footer from './Footer';
 
@@ -19,6 +21,8 @@ const Main = () => {
                     <Route path="/" element={<Catalog />} />
                     <Route path="/basket" element={<Basket />} />
                     <Route path="/favorite" element={<Favorite />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>

@@ -1,8 +1,12 @@
+import React, {useState} from "react";
 import { NavLink, Link } from "react-router-dom"
 import {useSelector} from "react-redux";
 import {ReactComponent as Logo} from '../images/logo.svg';
 import {ReactComponent as IconFavorite} from '../images/icons/favorite.svg';
 import {ReactComponent as IconCart} from '../images/icons/cart.svg';
+import ModalWindow from "./Other/ModalWindow";
+import Form from "./Other/Form";
+import FormInput from "./Other/FormInput";
 
 const Header = () => {
     const cartItems = useSelector((store) => store.basket.items);
@@ -10,6 +14,38 @@ const Header = () => {
     const cartCount = cartItems.reduce((partialSum, item) => partialSum + item.qty, 0);
     const cartTotal = cartItems.reduce((partialSum, item) => partialSum + (item.price * item.qty), 0);
     const favoriteCount = favoriteItems ? favoriteItems.length : 0;
+    const [openModal, setOpenModal] = useState(false);
+
+    const clickCallback = (e) => {
+        e.preventDefault();
+        setOpenModal(true);
+    };
+
+    const modalCallback = () => {
+        return (
+            <ModalWindow
+                title="Заказать звонок"
+                isOpen={openModal}
+                closeModal={() => setOpenModal(false)}
+            >
+                <Form classForm="callback">
+                    <FormInput
+                        classForm="callback"
+                        nameInput="name"
+                    >
+                        Ваше имя
+                    </FormInput>
+                    <FormInput
+                        classForm="callback"
+                        nameInput="phone"
+                        required={true}
+                    >
+                        Ваш телефон
+                    </FormInput>
+                </Form>
+            </ModalWindow>
+        )
+    };
 
     return (
         <>
@@ -26,7 +62,7 @@ const Header = () => {
                             <a href="tel:88005553535" className="header-tel__link">8 (800) 555 35 35</a>
                         </div>
                         <div className="header-callback">
-                            <a href="#" className="btn">Заказать звонок</a>
+                            <a href="#" className="btn" onClick={clickCallback}>Заказать звонок</a>
                         </div>
                     </div>
                 </div>
@@ -54,8 +90,8 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
+            {modalCallback()}
         </>
-
     );
 };
 
