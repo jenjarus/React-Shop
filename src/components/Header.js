@@ -28,15 +28,13 @@ const Header = () => {
                 isOpen={openModal}
                 closeModal={() => setOpenModal(false)}
             >
-                <Form classForm="callback">
+                <Form nameForm="callback">
                     <FormInput
-                        classForm="callback"
                         nameInput="name"
                     >
                         Ваше имя
                     </FormInput>
                     <FormInput
-                        classForm="callback"
                         nameInput="phone"
                         required={true}
                     >

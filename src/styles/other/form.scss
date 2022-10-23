@@ -1,0 +1,43 @@
+.form-input {
+  position: relative;
+  margin: 25px 0;
+
+  input {
+    transition: $transition_link;
+
+    &:focus {
+      border-color: $red_color;
+    }
+  }
+
+  label {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    padding: 0 5px;
+    background: $background_color;
+    transition: $transition_link;
+    cursor: pointer;
+  }
+
+  & input:focus+label,
+  & input.focused+label {
+    top: -8px;
+    font-size: 12px;
+  }
+}
+
+.form-submit {
+  margin-top: 10px;
+}
+
+.form-success {
+  margin: 30px 0;
+  text-align: center;
+
+  &__title {
+    margin-bottom: 10px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}

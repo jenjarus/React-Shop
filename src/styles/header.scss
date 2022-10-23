@@ -38,7 +38,10 @@ header {
 }
 
 .header-nav {
+  position: sticky;
+  top: 0;
   background: linear-gradient(to left, $dark_red_color 50%, $red_color 50%);
+  z-index: 1;
 
   &__wrapper {
     @include flex;
