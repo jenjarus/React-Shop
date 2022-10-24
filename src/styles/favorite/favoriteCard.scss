@@ -16,6 +16,11 @@
     }
   }
 
+  &__link {
+    color: $black_color;
+    text-decoration: none;
+  }
+
   &__delete {
     position: absolute;
     top: 20px;

@@ -13,7 +13,7 @@ const Favorite = () => {
         setLoading(true);
         setFavoriteItems([]);
 
-        items.map(async item => {
+        const dataItems = await Promise.all(items.map(async item => {
             try {
                 const url = `https://api.punkapi.com/v2/beers/${item}`;
                 const apiResponse = await fetch(url);
@@ -25,12 +25,14 @@ const Favorite = () => {
                     image_url: data[0].image_url,
                 };
 
-                setFavoriteItems(favoriteItems => [...favoriteItems, dataObject]);
-                setLoading(false);
+                return dataObject;
             } catch (err) {
                 console.log(err);
             }
-        });
+        }));
+
+        setFavoriteItems(dataItems);
+        setLoading(false);
     };
 
     const renderContent = () => {

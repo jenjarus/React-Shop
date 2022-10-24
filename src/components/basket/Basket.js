@@ -14,7 +14,7 @@ const Basket = () => {
         setLoading(true);
         setBasketItems([]);
 
-        items.map(async item => {
+        const dataItems = await Promise.all(items.map(async item => {
             try {
                 const url = `https://api.punkapi.com/v2/beers/${item.id}`;
                 const apiResponse = await fetch(url);
@@ -27,12 +27,14 @@ const Basket = () => {
                     qty: item.qty
                 };
 
-                setBasketItems(basketItems => [...basketItems, dataObject]);
-                setLoading(false);
+                return dataObject;
             } catch (err) {
                 console.log(err);
             }
-        });
+        }));
+
+        setBasketItems(dataItems);
+        setLoading(false);
     };
 
     const renderContent = () => {

@@ -4,6 +4,7 @@ import ProductCard from "../../catalog/productCard/ProductCard";
 
 const Viewed = () => {
     const cartItems = useSelector((store) => store.viewed.items);
+    const favoriteItems = useSelector((store) => store.favorite.items);
     const [loading, setLoading] = useState(false);
     const [viewedItems, setViewedItems] = useState([]);
 
@@ -16,6 +17,7 @@ const Viewed = () => {
                 const url = `https://api.punkapi.com/v2/beers/${item}`;
                 const apiResponse = await fetch(url);
                 const data = await apiResponse.json();
+
                 return data[0];
             } catch (err) {
                 console.log(err);
@@ -40,7 +42,7 @@ const Viewed = () => {
 
     useEffect(() => {
         getViewedItems(cartItems)
-    }, [cartItems.length]);
+    }, [cartItems.length, favoriteItems.length]);
 
     return (
         <div className="viewed">

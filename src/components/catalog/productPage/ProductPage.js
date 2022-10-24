@@ -154,6 +154,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         getProductData();
+        setFlagFavorite(!!checkFavoriteItem)
     }, [id]);
 
     return (
