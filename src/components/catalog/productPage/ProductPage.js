@@ -3,7 +3,9 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router";
 import {setProductToBasket} from "../../../actions/basket";
+import {setProductToViewed} from "../../../actions/viewed";
 import {deleteProductToFavorite, setProductToFavorite} from "../../../actions/favorite";
+import Viewed from "../../Other/viewed/Viewed";
 import ModalWindow from "../../Other/ModalWindow";
 import InputQty from "../../Other/InputQty";
 import Loading from "../../Other/Loading";
@@ -31,6 +33,7 @@ const ProductPage = () => {
             const data = await apiResponse.json();
 
             setProductData(data[0]);
+            dispatch(setProductToViewed(id));
             setLoading(false);
         } catch (err) {
             console.log(err);
@@ -140,6 +143,7 @@ const ProductPage = () => {
                         </div>
                     </div>
                     <ProductDescription />
+                    <Viewed />
                     <ModalAddCard />
                 </>
             )
@@ -150,7 +154,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         getProductData();
-    }, []);
+    }, [id]);
 
     return (
         <>

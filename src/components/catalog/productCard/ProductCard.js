@@ -59,10 +59,10 @@ const ProductCard = ({data}) => {
         <>
             <div className="catalog-item">
                 <div className="catalog-item__wrapper">
-                    <Link to={`/catalog/${data.id}`} className="">
-                        <div className={"catalog-item__favorite" + classActiveFavorite}>
-                            <span className="btn catalog-item__favorite-btn" onClick={getFavorite}><IconFavorite/></span>
-                        </div>
+                    <div className={"catalog-item__favorite" + classActiveFavorite}>
+                        <span className="btn catalog-item__favorite-btn" onClick={getFavorite}><IconFavorite/></span>
+                    </div>
+                    <Link to={`/catalog/${data.id}`} className="catalog-item__link">
                         <div className="catalog-item__image">
                             <img src={data.image_url} alt="img_catalog"/>
                         </div>

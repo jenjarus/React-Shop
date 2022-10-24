@@ -16,6 +16,11 @@
     }
   }
 
+  &__link {
+    color: $black_color;
+    text-decoration: none;
+  }
+
   &__favorite {
     position: absolute;
     top: 20px;
