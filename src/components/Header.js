@@ -21,9 +21,10 @@ const Header = () => {
         setOpenModal(true);
     };
 
-    const modalCallback = () => {
+    const ModalCallback = () => {
         return (
             <ModalWindow
+                classModal="modal--callback"
                 title="Заказать звонок"
                 isOpen={openModal}
                 closeModal={() => setOpenModal(false)}
@@ -88,7 +89,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-            {modalCallback()}
+            <ModalCallback />
         </>
     );
 };

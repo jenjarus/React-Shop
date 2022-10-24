@@ -39,7 +39,7 @@ const ProductCard = ({data}) => {
         }
     };
 
-    const modalAddCard = () => {
+    const ModalAddCard = () => {
         return (
             <ModalWindow
                 title="Товар добавлен в корзину"
@@ -59,14 +59,16 @@ const ProductCard = ({data}) => {
         <>
             <div className="catalog-item">
                 <div className="catalog-item__wrapper">
-                    <div className={"catalog-item__favorite" + classActiveFavorite}>
-                        <span className="btn catalog-item__favorite-btn" onClick={getFavorite}><IconFavorite/></span>
-                    </div>
-                    <div className="catalog-item__image">
-                        <img src={data.image_url} alt="img_catalog"/>
-                    </div>
-                    <div className="catalog-item__name">{data.name}</div>
-                    <div className="catalog-item__price">{data.ibu} $</div>
+                    <Link to={`/catalog/${data.id}`} className="">
+                        <div className={"catalog-item__favorite" + classActiveFavorite}>
+                            <span className="btn catalog-item__favorite-btn" onClick={getFavorite}><IconFavorite/></span>
+                        </div>
+                        <div className="catalog-item__image">
+                            <img src={data.image_url} alt="img_catalog"/>
+                        </div>
+                        <div className="catalog-item__name">{data.name}</div>
+                        <div className="catalog-item__price">{data.ibu} $</div>
+                    </Link>
                     <InputQty
                         count={count}
                         setCount={setCount}
@@ -76,7 +78,7 @@ const ProductCard = ({data}) => {
                     </div>
                 </div>
             </div>
-            {modalAddCard()}
+            <ModalAddCard />
         </>
     );
 };

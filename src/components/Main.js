@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import Header from './Header';
 import Catalog from './catalog/Catalog';
+import ProductPage from "./catalog/productPage/ProductPage";
 import Basket from './basket/Basket';
 import Favorite from "./favorite/Favorite";
 import About from "./pages/About";
@@ -19,6 +20,7 @@ const Main = () => {
             <div className="container">
                 <Routes>
                     <Route path="/" element={<Catalog />} />
+                    <Route path="/catalog/:id" element={<ProductPage />} />
                     <Route path="/basket" element={<Basket />} />
                     <Route path="/favorite" element={<Favorite />} />
                     <Route path="/about" element={<About />} />
