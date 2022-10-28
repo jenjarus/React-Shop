@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import {Link} from "react-router-dom"
 import BasketCard from "./basketCard/basketCard";
 import Loading from "../Other/Loading";
 
@@ -47,6 +48,9 @@ const Basket = () => {
                         </div>
                         <div className="basket-total">
                             Всего: <span className="basket-total__bold">{cartTotal} $</span>
+                        </div>
+                        <div className="basket-checkout">
+                            <Link to="/basket/checkout/" className="btn basket-checkout__btn">Перейти к оформлению</Link>
                         </div>
                     </>
                 )

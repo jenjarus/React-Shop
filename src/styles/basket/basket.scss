@@ -6,6 +6,7 @@
 }
 
 .basket-total {
+  margin-top: 40px;
   font-size: 24px;
   line-height: 28px;
   text-align: right;
@@ -13,4 +14,9 @@
   &__bold {
     font-weight: 700;
   }
+}
+
+.basket-checkout {
+  text-align: right;
+  margin-top: 40px;
 }
