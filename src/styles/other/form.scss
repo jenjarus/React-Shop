@@ -6,6 +6,10 @@
     transition: $transition_link;
 
     &:focus {
+      border-color: $black_color;
+    }
+
+    &.form-input__error {
       border-color: $red_color;
     }
   }
@@ -24,6 +28,15 @@
   & input.focused+label {
     top: -8px;
     font-size: 12px;
+  }
+
+  &__error-text {
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    font-size: 13px;
+    line-height: 16px;
+    color: $red_color;
   }
 }
 
