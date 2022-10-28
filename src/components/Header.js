@@ -29,7 +29,10 @@ const Header = () => {
                 isOpen={openModal}
                 closeModal={() => setOpenModal(false)}
             >
-                <Form nameForm="callback">
+                <Form
+                    nameForm="callback"
+                    sendMessage={sendMessageCallbackForm}
+                >
                     <FormInput
                         nameInput="name"
                     >
@@ -44,6 +47,20 @@ const Header = () => {
                 </Form>
             </ModalWindow>
         )
+    };
+
+    const sendMessageCallbackForm = (data) => {
+        const msgName = data.name ? `Имя: ${data.name.value}` : '';
+        const msgPhone = data.phone ? `Имя: ${data.phone.value}` : '';
+        const msgText = `
+Представим что это пришло на почту
+
+Форма "Заказать звонок"
+${msgName}
+${msgPhone}
+        `;
+
+        console.log(msgText);
     };
 
     return (

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Form = ({nameForm = '', textBtn = 'Отправить', successText, children}) => {
+const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage,  children}) => {
     const [success, setSuccess] = useState(false);
     const [errorForm, setErrorForm] = useState(false);
     const [dataForm, setDataForm] = useState({});
@@ -9,6 +9,7 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, child
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm(e.target)) {
+            sendMessage(dataForm);
             setDataForm({});
             setSuccess(true);
         }

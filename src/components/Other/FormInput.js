@@ -19,12 +19,13 @@ const FormInput = ({nameInput = '', required = false, children, setDataForm, dat
 
         setDataForm((prevState) => ({
             ...prevState,
-            newDataForm}));
+            newDataForm,
+        }));
 
         setFocused(!!e.target.value.length);
     };
 
-    const renderInput = () => {
+    const RenderInput = () => {
         if(nameInput === 'phone') {
                 return <InputMask type="text" mask="+7 (999) 999-99-99" className={errorClass + focusedClass} name={nameInput} id={nameId} required={required} onChange={handleChange} />;
         } else {
@@ -32,14 +33,20 @@ const FormInput = ({nameInput = '', required = false, children, setDataForm, dat
         }
     };
 
+    const ErrorText = () => {
+        if(error) {
+            const errorMsg = error.customText ? error.customText : 'Заполните поле';
+
+            return <span className="form-input__error-text">{errorMsg}</span>
+        }
+    };
+
     return (
-        <>
-            <div className="form-input">
-                {renderInput()}
-                {children && <label htmlFor={nameId}>{children}{required && ' *'}</label>}
-                {error && <span className="form-input__error-text">{error.customText ? error.customText : 'Заполните поле'}</span>}
-            </div>
-        </>
+        <div className="form-input">
+            {RenderInput()}
+            {children && <label htmlFor={nameId}>{children}{required && ' *'}</label>}
+            <ErrorText />
+        </div>
     )
 };
 
