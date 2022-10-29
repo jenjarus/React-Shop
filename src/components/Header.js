@@ -87,7 +87,7 @@ ${msgPhone}
                 <div className="container">
                     <div className="header-nav__wrapper">
                         <ul className="header-nav__items">
-                            <li className="header-nav__item"><NavLink to="/" end>Каталог</NavLink></li>
+                            <li className="header-nav__item"><NavLink to="/catalog">Каталог</NavLink></li>
                             <li className="header-nav__item"><NavLink to="/about">О нас</NavLink></li>
                             <li className="header-nav__item"><NavLink to="/contact">Контакты</NavLink></li>
                         </ul>

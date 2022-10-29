@@ -108,6 +108,13 @@ const Checkout = () => {
                             Ваш e-mail
                         </FormInput>
                     </FormBlock>
+                    <div className="checkout-form__block checkout-form__block--total">Итого: {checkoutTotal}$</div>
+                    <FormBlock classes="checkout-form__block checkout-form__block--policy">
+                        <div className="form-checkbox">
+                            <input type="checkbox" id="policy" name="policy" checked="checked"/>
+                            <label htmlFor="policy">Подтвердите согласие на обработку персональных данных</label>
+                        </div>
+                    </FormBlock>
                 </Form>
             </div>
         )
@@ -149,4 +156,6 @@ ${msgTotal}
 
 export default Checkout;
 
-// TODO поля - физ или юр лицо; Доставка или самовывоз; Галка согласия с политикой
+// TODO переулючать часть поля в зависимости от radio (тип покупателя, тип доставки)
+// TODO изменить сообщение о покупке
+// TODO добавить стили

@@ -1,0 +1,22 @@
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__zaglushka {
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+  }
+
+  &__buttons {
+    margin-top: 40px;
+
+    .main-page--main-page {
+      width: 275px;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

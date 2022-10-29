@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom"
 import Header from './Header';
+import MainPage from "./pages/MainPage";
 import Catalog from './catalog/Catalog';
 import ProductPage from "./catalog/productPage/ProductPage";
 import Basket from './basket/Basket';
@@ -21,7 +22,8 @@ const Main = () => {
         <main>
             <div className="container">
                 <Routes>
-                    <Route path="/" element={<Catalog />} />
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/catalog" element={<Catalog />} />
                     <Route path="/catalog/:id" element={<ProductPage />} />
                     <Route path="/basket" element={<Basket />} />
                     <Route path="/basket/checkout/" element={<Checkout />} />
