@@ -28,6 +28,10 @@ export default function basket (state = initialState, action) {
                 ...state,
                 items: [...state.items.filter(item => item.id !== action.id)],
             };
+        case 'RESET_PRODUCT':
+            return {
+                items: [],
+            };
         default:
             return state;
     }

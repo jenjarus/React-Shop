@@ -13,6 +13,19 @@
       line-height: 24px;
     }
 
+    &-radio {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      .form-radio {
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+
     &--total {
       font-weight: 700;
       font-size: 20px;
@@ -24,4 +37,8 @@
       padding-left: 25px;
     }
   }
+}
+
+.form-success--checkout {
+  text-align: left;
 }

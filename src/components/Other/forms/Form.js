@@ -5,36 +5,21 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
     const [success, setSuccess] = useState(false);
     const [errorForm, setErrorForm] = useState(false);
     const [dataForm, setDataForm] = useState({});
-    successText = successText ? successText : <SuccessText />;
+    successText = successText ? successText() : <SuccessText />;
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validateForm(e.target)) {
+        if (validateForm()) {
             sendMessage(dataForm);
             setDataForm({});
             setSuccess(true);
         }
     };
 
-    const validateForm = (target) => {
-        let formData = {};
+    const validateForm = () => {
         let errors = {};
-        let cloneDataForm = dataForm.length ? dataForm : formData;
+        let cloneDataForm = dataForm;
         let isValid = true;
-
-        if (!dataForm.length) {
-            for (let i = 0; i < target.length; i++) {
-                if (target.elements[i].type !== 'submit') {
-                    formData[target.elements[i].getAttribute("name")] = {
-                        type: target.elements[i].type,
-                        name: target.elements[i].name,
-                        value: target.elements[i].value,
-                        required: target.elements[i].required,
-                        checked: target.elements[i].checked,
-                    };
-                }
-            }
-        }
 
         for (let key in cloneDataForm) {
             if (cloneDataForm[key].required) {

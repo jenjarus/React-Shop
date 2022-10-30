@@ -20,3 +20,9 @@ export function deleteProduct(id) {
     }
 }
 
+
+export function resetProduct() {
+    return {
+        type: 'RESET_PRODUCT',
+    }
+}

@@ -6,6 +6,19 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
     const error = errorForm[props.name];
     const errorClass = errorForm[props.name] ? " form-input__error" : '';
     const inputId = nameForm + "-" + props.name;
+    let inputRef = useRef(null);
+
+    const setInitalValue = () => {
+        let newDataForm = dataForm;
+        newDataForm[inputRef.current.name] = {
+            type: inputRef.current.type,
+            name: inputRef.current.name,
+            value: inputRef.current.value,
+            required: inputRef.current.required,
+        };
+
+        setDataForm(newDataForm);
+    };
 
     const handleChange = (e) => {
         let newDataForm = dataForm;
@@ -34,9 +47,13 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
         }
     };
 
+    useEffect(() => {
+        setInitalValue();
+    },[inputRef]);
+
     return (
         <div className="form-input">
-            <textarea className={errorClass + focusedClass} id={inputId} onChange={handleChange} {...props} />
+            <textarea className={focusedClass + errorClass} id={inputId} onChange={handleChange} ref={inputRef} {...props} />
             {children && <label htmlFor={inputId}>{children}{props.required && ' *'}</label>}
             <ErrorText />
         </div>

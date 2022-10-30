@@ -5,6 +5,7 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
     const errorClass = errorForm[props.name] ? " form-input__error" : '';
     const inputId = nameForm + "-" + props.name + num;
     let inputRef = useRef(null);
+    // num - Временно !!!!!!!
 
     const setInitalValue = () => {
         let newDataForm = dataForm;

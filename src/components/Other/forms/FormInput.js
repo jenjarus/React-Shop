@@ -1,5 +1,5 @@
-import {useState} from "react";
-import InputMask from 'react-input-mask';
+import React, {useEffect, useRef, useState} from "react";
+import { PatternFormat } from 'react-number-format';
 
 const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, ...props}) => {
     const [focused, setFocused] = useState(false);
@@ -8,6 +8,19 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
     const errorClass = errorForm[props.name] ? " form-input__error" : '';
     const inputId = nameForm + "-" + props.name;
     (!props.type) && (props.type = 'text');
+    let inputRefs = useRef(null);
+
+    const setInitalValue = () => {
+        let newDataForm = dataForm;
+        newDataForm[inputRefs.current.name] = {
+            type: inputRefs.current.type,
+            name: inputRefs.current.name,
+            value: inputRefs.current.value,
+            required: inputRefs.current.required,
+        };
+
+        setDataForm(newDataForm);
+    };
 
     const handleChange = (e) => {
         let newDataForm = dataForm;
@@ -28,13 +41,13 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
         setFocused(!!e.target.value.length);
     };
 
-    /*const RenderInput = () => {
+    const RenderInput = () => {
         if(props.name === 'phone') {
-                return <input className={errorClass + focusedClass} id={inputId} onChange={handleChange} {...props} />;
+            return <PatternFormat className={focusedClass + errorClass} id={inputId} onChange={handleChange} getInputRef={inputRefs} {...props} />
         } else {
-            return <InputMask className={errorClass + focusedClass} id={inputId} onChange={handleChange} {...props} />
+            return <input className={focusedClass + errorClass} id={inputId} onChange={handleChange} ref={inputRefs} {...props} />
         }
-    };*/
+    };
 
     const ErrorText = () => {
         if(error) {
@@ -44,9 +57,13 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
         }
     };
 
+    useEffect(() => {
+        setInitalValue();
+    },[inputRefs]);
+
     return (
         <div className="form-input">
-            <InputMask className={errorClass + focusedClass} id={inputId} onChange={handleChange} {...props} />
+            {RenderInput()}
             {children && <label htmlFor={inputId}>{children}{props.required && ' *'}</label>}
             <ErrorText />
         </div>
