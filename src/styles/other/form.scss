@@ -2,7 +2,7 @@
   position: relative;
   margin: 25px 0;
 
-  input {
+  input, textarea {
     transition: $transition_link;
 
     &:focus {
@@ -12,6 +12,10 @@
     &.form-input__error {
       border-color: $red_color;
     }
+  }
+
+  textarea {
+    resize: none;
   }
 
   label {
@@ -25,7 +29,9 @@
   }
 
   & input:focus+label,
-  & input.focused+label {
+  & input.focused+label,
+  & textarea:focus+label,
+  & textarea.focused+label {
     top: -8px;
     font-size: 12px;
   }
@@ -37,6 +43,88 @@
     font-size: 13px;
     line-height: 16px;
     color: $red_color;
+  }
+}
+
+.form-radio {
+  position: relative;
+  margin: 25px 0;
+
+  input {
+    display: none;
+  }
+
+  label {
+    padding-left: 30px;
+    transition: $transition_link;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid $black_color;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked+label:before {
+    border-color: $red_color;
+  }
+  input:checked+label:after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 50%;
+    background: $red_color;
+  }
+}
+
+.form-checkbox {
+  position: relative;
+  margin: 25px 0;
+
+  input {
+    display: none;
+  }
+
+  label {
+    padding-left: 30px;
+    transition: $transition_link;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: 1px solid $black_color;
+    }
+  }
+
+  input:checked+label:before {
+    border-color: $red_color;
+  }
+  input:checked+label:after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: $red_color;
   }
 }
 

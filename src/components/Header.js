@@ -5,8 +5,8 @@ import {ReactComponent as Logo} from '../images/logo.svg';
 import {ReactComponent as IconFavorite} from '../images/icons/favorite.svg';
 import {ReactComponent as IconCart} from '../images/icons/cart.svg';
 import ModalWindow from "./Other/ModalWindow";
-import Form from "./Other/Form";
-import FormInput from "./Other/FormInput";
+import Form from "./Other/forms/Form";
+import FormInput from "./Other/forms/FormInput";
 
 const Header = () => {
     const cartItems = useSelector((store) => store.basket.items);

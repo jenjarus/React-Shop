@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {NAME_COMPONENTS} from "./constants"; // Массив созданных компонентов формы для передачи пропсов
 
 const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage,  children}) => {
     const [success, setSuccess] = useState(false);
@@ -25,9 +26,11 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
             for (let i = 0; i < target.length; i++) {
                 if (target.elements[i].type !== 'submit') {
                     formData[target.elements[i].getAttribute("name")] = {
+                        type: target.elements[i].type,
                         name: target.elements[i].name,
                         value: target.elements[i].value,
                         required: target.elements[i].required,
+                        checked: target.elements[i].checked,
                     };
                 }
             }
@@ -48,6 +51,13 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
                         error: true,
                         customText: "Заполните поле полностью",
                     };
+                } else if (cloneDataForm[key].type === 'checkbox' && cloneDataForm[key].name === 'policy' && cloneDataForm[key].checked !== true) {
+                    isValid = false;
+                    errors[cloneDataForm[key].name] = {
+                        name: cloneDataForm[key].name,
+                        error: true,
+                        customText: "Подтвердите свое согласие",
+                    };
                 }
             }
         }
@@ -58,7 +68,7 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
     };
 
     const childrenWithProps = React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
+        if (React.isValidElement(child) && (NAME_COMPONENTS.find(el => el === child.type.name))) {
             return React.cloneElement(child, {setDataForm, dataForm, nameForm, errorForm});
         }
         return child;
