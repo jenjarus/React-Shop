@@ -1,11 +1,12 @@
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, ...props}) => {
+    const {name, required, ...rest} = props;
     const [focused, setFocused] = useState(false);
     const focusedClass = focused ? "focused" : '';
-    const error = errorForm[props.name];
-    const errorClass = errorForm[props.name] ? " form-input__error" : '';
-    const inputId = nameForm + "-" + props.name;
+    const error = errorForm[name];
+    const errorClass = errorForm[name] ? " form-input__error" : '';
+    const inputId = nameForm + "-" + name;
     let inputRef = useRef(null);
 
     const setInitalValue = () => {
@@ -53,8 +54,9 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
 
     return (
         <div className="form-input">
-            <textarea className={focusedClass + errorClass} id={inputId} onChange={handleChange} ref={inputRef} {...props} />
-            {children && <label htmlFor={inputId}>{children}{props.required && ' *'}</label>}
+            <textarea className={focusedClass + errorClass} name={name} id={inputId}
+                      required={required} onChange={handleChange} ref={inputRef} {...rest} />
+            {children && <label htmlFor={inputId}>{children}{required && ' *'}</label>}
             <ErrorText />
         </div>
     )

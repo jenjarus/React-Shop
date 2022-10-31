@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {resetProduct} from "../../../actions/basket";
 import Form from "../../Other/forms/Form";
-import FormBlock from "../../Other/forms/FormBlock";
+import FormDiv from "../../Other/forms/FormDiv";
 import FormInput from "../../Other/forms/FormInput";
 import FormTextarea from "../../Other/forms/FormTextarea";
 import FormRadio from "../../Other/forms/FormRadio";
@@ -11,13 +11,13 @@ import FormCheckbox from "../../Other/forms/FormCheckbox";
 const Checkout = () => {
     const dispatch = useDispatch();
     const checkoutItems = useSelector((store) => store.basket.items);
-    const [loading, setLoading] = useState(false);
+    //const [loading, setLoading] = useState(false);
     const [viewDelivery, setViewDelivery] = useState(false);
     const [productItems, setProductItems] = useState([]);
     const checkoutTotal = checkoutItems.reduce((partialSum, item) => partialSum + (item.price * item.qty), 0);
 
     const getCheckoutItems = async (items) => {
-        setLoading(true);
+        //setLoading(true);
         setProductItems([]);
 
         const dataItems = await Promise.all(items.map(async item => {
@@ -40,7 +40,7 @@ const Checkout = () => {
         }));
 
         setProductItems(dataItems);
-        setLoading(false);
+        //setLoading(false);
     };
 
     const getListItems = () => {
@@ -59,9 +59,9 @@ const Checkout = () => {
                         sendMessage={sendMessageCheckoutForm}
                         textBtn="Оформить заказ"
                     >
-                        <FormBlock classes="checkout-form__block">
-                            <div className="checkout-form__block-title">Тип покупателя</div>
-                            <FormBlock classes="checkout-form__block-radio">
+                        <FormDiv classes="checkout-form__block">
+                            <FormDiv classes="checkout-form__block-title">Тип покупателя</FormDiv>
+                            <FormDiv classes="checkout-form__block-radio">
                                 <FormRadio
                                     num={1}
                                     name="type_client"
@@ -77,11 +77,11 @@ const Checkout = () => {
                                 >
                                     Юридическое лицо
                                 </FormRadio>
-                            </FormBlock>
-                        </FormBlock>
-                        <FormBlock classes="checkout-form__block">
-                            <div className="checkout-form__block-title">Способ доставки</div>
-                            <FormBlock classes="checkout-form__block-radio">
+                            </FormDiv>
+                        </FormDiv>
+                        <FormDiv classes="checkout-form__block">
+                            <FormDiv classes="checkout-form__block-title">Способ доставки</FormDiv>
+                            <FormDiv classes="checkout-form__block-radio">
                                 <FormRadio
                                     num={1}
                                     name="type_delivery"
@@ -95,7 +95,7 @@ const Checkout = () => {
                                     value="Доставка курьером"
                                     onChanges={() => setViewDelivery(true)}
                                 >Доставка курьером</FormRadio>
-                            </FormBlock>
+                            </FormDiv>
                             {viewDelivery && <FormTextarea
                                 name="delivery_address"
                                 required
@@ -103,10 +103,10 @@ const Checkout = () => {
                             >
                                 Адрес доставки
                             </FormTextarea>}
-                        </FormBlock>
-                        <FormBlock classes="checkout-form__block">
-                            <div className="checkout-form__block-title">Способ оплаты</div>
-                            <FormBlock classes="checkout-form__block-radio">
+                        </FormDiv>
+                        <FormDiv classes="checkout-form__block">
+                            <FormDiv classes="checkout-form__block-title">Способ оплаты</FormDiv>
+                            <FormDiv classes="checkout-form__block-radio">
                                 <FormRadio
                                     num={1}
                                     name="type_payment"
@@ -118,10 +118,10 @@ const Checkout = () => {
                                     name="type_payment"
                                     value="Безналичный расчет"
                                 >Безналичный расчет</FormRadio>
-                            </FormBlock>
-                        </FormBlock>
-                        <FormBlock classes="checkout-form__block">
-                            <div className="checkout-form__block-title">Данные покупателя</div>
+                            </FormDiv>
+                        </FormDiv>
+                        <FormDiv classes="checkout-form__block">
+                            <FormDiv classes="checkout-form__block-title">Данные покупателя</FormDiv>
                             <FormInput
                                 name="name"
                             >
@@ -130,7 +130,8 @@ const Checkout = () => {
                             <FormInput
                                 name="phone"
                                 format="+7 (###) ###-##-##"
-                                allowEmptyFormatting mask="_"
+                                allowEmptyFormatting
+                                mask="_"
                                 required
                             >
                                 Ваш телефон
@@ -141,17 +142,16 @@ const Checkout = () => {
                             >
                                 Ваш e-mail
                             </FormInput>
-                        </FormBlock>
-                        <div className="checkout-form__block checkout-form__block--total">Итого: {checkoutTotal}$</div>
-                        <FormBlock classes="checkout-form__block checkout-form__block--policy">
+                        </FormDiv>
+                        <FormDiv classes="checkout-form__block checkout-form__block--total">Итого: {checkoutTotal}$</FormDiv>
+                        <FormDiv classes="checkout-form__block checkout-form__block--policy">
                             <FormCheckbox
-                                num={1}
                                 name="policy"
                                 value="Согласие"
                                 defaultChecked
                                 required
                             >Подтвердите согласие на обработку персональных данных</FormCheckbox>
-                        </FormBlock>
+                        </FormDiv>
                     </Form>
                 </div>
             )

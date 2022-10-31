@@ -1,15 +1,16 @@
-import {useEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 
 const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children, onChanges, ...props}) => {
-    const error = errorForm[props.name];
-    const errorClass = errorForm[props.name] ? " form-input__error" : '';
-    const inputId = nameForm + "-" + props.name + num;
+    const {name, required, ...rest} = props;
+    const error = errorForm[name];
+    const errorClass = errorForm[name] ? " form-input__error" : '';
+    num ? num = "-" + num : num = '';
+    const inputId = nameForm + "-" + name + num;
     let inputRef = useRef(null);
-    // num - Временно !!!!!!!
 
     const setInitalValue = () => {
         let newDataForm = dataForm;
-        if(inputRef.current.checked) {
+        if (inputRef.current.checked) {
             newDataForm[inputRef.current.name] = {
                 type: inputRef.current.type,
                 name: inputRef.current.name,
@@ -41,7 +42,7 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
     };
 
     const ErrorText = () => {
-        if(error) {
+        if (error) {
             const errorMsg = error.customText ? error.customText : 'Заполните поле';
 
             return <span className="form-input__error-text">{errorMsg}</span>
@@ -50,13 +51,14 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
 
     useEffect(() => {
         setInitalValue();
-    },[inputRef]);
+    }, [inputRef]);
 
     return (
         <div className="form-checkbox">
-            <input type="checkbox" className={errorClass} id={inputId} onChange={handleChange} ref={inputRef} {...props} />
-            {children && <label htmlFor={inputId}>{children}{props.required && ' *'}</label>}
-            <ErrorText />
+            <input type="checkbox" className={errorClass} name={name} id={inputId} required={required}
+                   onChange={handleChange} ref={inputRef} {...rest} />
+            {children && <label htmlFor={inputId}>{children}{required && ' *'}</label>}
+            <ErrorText/>
         </div>
     )
 };

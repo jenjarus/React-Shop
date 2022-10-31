@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import {NAME_COMPONENTS} from "./constants"; // Массив созданных компонентов формы для передачи пропсов
 
 const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage,  children}) => {
-    const [success, setSuccess] = useState(false);
-    const [errorForm, setErrorForm] = useState(false);
+    const [success, setSuccess] = useState('');
+    const [errorForm, setErrorForm] = useState({abc: false});
     const [dataForm, setDataForm] = useState({});
     successText = successText ? successText() : <SuccessText />;
 
@@ -18,8 +17,9 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
 
     const validateForm = () => {
         let errors = {};
-        let cloneDataForm = dataForm;
         let isValid = true;
+        let cloneDataForm = dataForm;
+        const regEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
         for (let key in cloneDataForm) {
             if (cloneDataForm[key].required) {
@@ -35,6 +35,13 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
                         name: cloneDataForm[key].name,
                         error: true,
                         customText: "Заполните поле полностью",
+                    };
+                } else if (cloneDataForm[key].name === 'email' && !regEmail.test(cloneDataForm[key].value)) {
+                    isValid = false;
+                    errors[cloneDataForm[key].name] = {
+                        name: cloneDataForm[key].name,
+                        error: true,
+                        customText: "Напишите почту. Пример: abc@abc.ru",
                     };
                 } else if (cloneDataForm[key].type === 'checkbox' && cloneDataForm[key].name === 'policy' && cloneDataForm[key].checked !== true) {
                     isValid = false;
@@ -53,7 +60,7 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
     };
 
     const childrenWithProps = React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && (NAME_COMPONENTS.find(el => el === child.type.name))) {
+        if (React.isValidElement(child)) {
             return React.cloneElement(child, {setDataForm, dataForm, nameForm, errorForm});
         }
         return child;

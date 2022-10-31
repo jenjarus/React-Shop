@@ -34,12 +34,15 @@ const Header = () => {
                     sendMessage={sendMessageCallbackForm}
                 >
                     <FormInput
-                        nameInput="name"
+                        name="name"
                     >
                         Ваше имя
                     </FormInput>
                     <FormInput
-                        nameInput="phone"
+                        name="phone"
+                        format="+7 (###) ###-##-##"
+                        allowEmptyFormatting
+                        mask="_"
                         required={true}
                     >
                         Ваш телефон
@@ -51,7 +54,7 @@ const Header = () => {
 
     const sendMessageCallbackForm = (data) => {
         const msgName = data.name ? `Имя: ${data.name.value}` : '';
-        const msgPhone = data.phone ? `Имя: ${data.phone.value}` : '';
+        const msgPhone = data.phone ? `Телефон: ${data.phone.value}` : '';
         const msgText = `
 Представим что это пришло на почту
 

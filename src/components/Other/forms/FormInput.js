@@ -1,14 +1,14 @@
 import React, {useEffect, useRef, useState} from "react";
 import { PatternFormat } from 'react-number-format';
 
-const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, ...props}) => {
+const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, type = 'text', ...props}) => {
+    const {name, required, ...rest} = props;
     const [focused, setFocused] = useState(false);
     const focusedClass = focused ? "focused" : '';
-    const error = errorForm[props.name];
-    const errorClass = errorForm[props.name] ? " form-input__error" : '';
-    const inputId = nameForm + "-" + props.name;
-    (!props.type) && (props.type = 'text');
-    let inputRefs = useRef(null);
+    const error = errorForm[name];
+    const errorClass = errorForm[name] ? " form-input__error" : '';
+    const inputId = nameForm + "-" + name;
+    const inputRefs = useRef(null);
 
     const setInitalValue = () => {
         let newDataForm = dataForm;
@@ -42,10 +42,11 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
     };
 
     const RenderInput = () => {
-        if(props.name === 'phone') {
-            return <PatternFormat className={focusedClass + errorClass} id={inputId} onChange={handleChange} getInputRef={inputRefs} {...props} />
+        if(name === 'phone') {
+            return <PatternFormat type={type} className={focusedClass + errorClass} name={name} id={inputId}
+                                  required={required} onChange={handleChange} getInputRef={inputRefs} {...rest} />
         } else {
-            return <input className={focusedClass + errorClass} id={inputId} onChange={handleChange} ref={inputRefs} {...props} />
+            return <input type={type} className={focusedClass + errorClass} name={name} id={inputId} required={required} onChange={handleChange} ref={inputRefs} {...rest} />
         }
     };
 
@@ -64,7 +65,7 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
     return (
         <div className="form-input">
             {RenderInput()}
-            {children && <label htmlFor={inputId}>{children}{props.required && ' *'}</label>}
+            {children && <label htmlFor={inputId}>{children}{required && ' *'}</label>}
             <ErrorText />
         </div>
     )
