@@ -42,7 +42,7 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
 
         setDataForm((prevState) => ({
             ...prevState,
-            newDataForm,
+            ...newDataForm,
         }));
 
         onChanges && onChanges(e); // Дополнительная функция для onChange

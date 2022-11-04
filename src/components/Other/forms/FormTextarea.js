@@ -39,7 +39,7 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
 
         setDataForm((prevState) => ({
             ...prevState,
-            newDataForm,
+            ...newDataForm,
         }));
 
         onChanges && onChanges(e); // Дополнительная функция для onChange

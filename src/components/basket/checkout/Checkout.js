@@ -162,13 +162,13 @@ const Checkout = () => {
 
     const sendMessageCheckoutForm = (data) => {
         dispatch(resetProduct());
-        const msgTypeClient = data['type_client'] ? `Тип клиента: ${data.type_client.value}` : '';
-        const msgName = data.name ? `ФИО: ${data.name.value}` : '';
-        const msgPhone = data.phone ? `Телефон: ${data.phone.value}` : '';
-        const msgEmail = data.email ? `Email: ${data.email.value}` : '';
-        const msgTypePayment = data['type_payment'] ? `Способ оплаты: ${data.type_payment.value}` : '';
-        const msgTypeDelivery = data['type_delivery'] ? `Способ доставки: ${data.type_delivery.value}` : '';
-        const msgAdr = data.delivery_address ? `Адрес доставки: ${data.delivery_address.value}` : '';
+        const msgTypeClient = data['type_client'] ? `Тип клиента: ${data.type_client}` : '';
+        const msgName = data.name ? `ФИО: ${data.name}` : '';
+        const msgPhone = data.phone ? `Телефон: ${data.phone}` : '';
+        const msgEmail = data.email ? `Email: ${data.email}` : '';
+        const msgTypePayment = data['type_payment'] ? `Способ оплаты: ${data.type_payment}` : '';
+        const msgTypeDelivery = data['type_delivery'] ? `Способ доставки: ${data.type_delivery}` : '';
+        const msgAdr = data.delivery_address ? `Адрес доставки: ${data.delivery_address}` : '';
         const msgProducts = productItems ? `Список товаров:\n\n${getListItems()}` : '';
         const msgTotal = `Общая сумма: ${checkoutTotal}$`;
 

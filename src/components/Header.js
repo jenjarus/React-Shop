@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { NavLink, Link } from "react-router-dom"
+import {NavLink, Link} from "react-router-dom"
 import {useSelector} from "react-redux";
 import {ReactComponent as Logo} from '../images/logo.svg';
 import {ReactComponent as IconFavorite} from '../images/icons/favorite.svg';
@@ -52,8 +52,8 @@ const Header = () => {
     };
 
     const sendMessageCallbackForm = (data) => {
-        const msgName = data.name ? `Имя: ${data.name.value}` : '';
-        const msgPhone = data.phone ? `Телефон: ${data.phone.value}` : '';
+        const msgName = data.name ? `Имя: ${data.name}` : '';
+        const msgPhone = data.phone ? `Телефон: ${data.phone}` : '';
         const msgText = `
 Представим что это пришло на почту
 
@@ -72,10 +72,11 @@ ${msgPhone}
                     <div className="header">
                         <div className="header-logo">
                             <Link to="/">
-                                <Logo />
+                                <Logo/>
                             </Link>
                         </div>
-                        <div className="header-title">Черное <span className="header-title__highlight">Красное</span></div>
+                        <div className="header-title">Черное <span className="header-title__highlight">Красное</span>
+                        </div>
                         <div className="header-tel">
                             <a href="tel:88005553535" className="header-tel__link">8 (800) 555 35 35</a>
                         </div>
@@ -92,6 +93,8 @@ ${msgPhone}
                             <li className="header-nav__item"><NavLink to="/catalog">Каталог</NavLink></li>
                             <li className="header-nav__item"><NavLink to="/about">О нас</NavLink></li>
                             <li className="header-nav__item"><NavLink to="/contact">Контакты</NavLink></li>
+                            <li className="header-nav__item"><NavLink to="/signup">Регистрация</NavLink></li>
+                            <li className="header-nav__item"><NavLink to="/signin">Войти</NavLink></li>
                         </ul>
                         <div className="header-nav__tabs">
                             <div className="header-nav__tab header-nav__tab--favorite">
@@ -108,7 +111,7 @@ ${msgPhone}
                     </div>
                 </div>
             </nav>
-            <ModalCallback />
+            <ModalCallback/>
         </>
     );
 };

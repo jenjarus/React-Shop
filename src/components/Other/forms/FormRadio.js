@@ -38,7 +38,7 @@ const FormRadio = ({num, setDataForm, dataForm, nameForm, errorForm, children, o
 
         setDataForm((prevState) => ({
             ...prevState,
-            newDataForm,
+            ...newDataForm,
         }));
 
         onChanges && onChanges(e); // Дополнительная функция для onChange

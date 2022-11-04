@@ -47,7 +47,7 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
 
         setDataForm((prevState) => ({
             ...prevState,
-            newDataForm,
+            ...newDataForm,
         }));
 
         onChanges && onChanges(e); // Дополнительная функция для onChange

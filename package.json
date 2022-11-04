@@ -1,7 +1,7 @@
 {
   "name": "react-shop",
   "version": "0.1.0",
-  "homepage": "./",
+  "homepage": "./React-Shop/build/",
   "private": true,
   "dependencies": {
     "@pbe/react-yandex-maps": "^1.1.9",

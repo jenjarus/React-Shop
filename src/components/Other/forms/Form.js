@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage, children}) => {
+const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage, customErrorFunc, children}) => {
     const [success, setSuccess] = useState('');
     const [errorForm, setErrorForm] = useState({});
     const [dataForm, setDataForm] = useState({});
@@ -8,8 +8,18 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const submitData = dataForm;
+
         if (validateForm()) {
-            sendMessage(dataForm);
+            for (let key in submitData) {
+                if(submitData[key].value.length) {
+                    submitData[key] = submitData[key].value;
+                } else {
+                    submitData[key] = '';
+                }
+            }
+
+            sendMessage(submitData);
             setDataForm({});
             setSuccess(true);
         }
@@ -19,7 +29,9 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
         let errors = {};
         let isValid = true;
         let cloneDataForm = dataForm;
+        const customError = customErrorFunc ? customErrorFunc() : {};
         const regEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        const regPassword = new RegExp(/^[A-Za-z0-9]\w{7,}$/);
 
         for (let key in cloneDataForm) {
             if (cloneDataForm[key].required) {
@@ -43,6 +55,13 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
                         error: true,
                         customText: "Напишите почту. Пример: abc@abc.ru",
                     };
+                } else if (cloneDataForm[key].name === 'password' && !regPassword.test(cloneDataForm[key].value)) {
+                    isValid = false;
+                    errors[cloneDataForm[key].name] = {
+                        name: cloneDataForm[key].name,
+                        error: true,
+                        customText: "Пароль должен иметь минимум 8 символов",
+                    };
                 } else if (cloneDataForm[key].type === 'checkbox' && cloneDataForm[key].name === 'policy' && cloneDataForm[key].checked !== true) {
                     isValid = false;
                     errors[cloneDataForm[key].name] = {
@@ -53,6 +72,15 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
                 }
             }
         }
+
+        if(isValid && Object.keys(customError).length !== 0) {
+            isValid = false;
+        }
+
+        errors = {
+            ...errors,
+            ...customError
+        };
 
         setErrorForm(errors);
 
