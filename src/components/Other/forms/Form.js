@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
-const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage,  children}) => {
+const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendMessage, children}) => {
     const [success, setSuccess] = useState('');
-    const [errorForm, setErrorForm] = useState({abc: false});
+    const [errorForm, setErrorForm] = useState({});
     const [dataForm, setDataForm] = useState({});
-    successText = successText ? successText() : <SuccessText />;
+    successText = successText ? successText() : <SuccessText/>;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,14 +29,14 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
                         name: cloneDataForm[key].name,
                         error: true,
                     };
-                } else if (cloneDataForm[key].name === 'phone' && cloneDataForm[key].value.length !== 18) {
+                } else if (cloneDataForm[key].type === 'phone' && cloneDataForm[key].value.length !== 18) {
                     isValid = false;
                     errors[cloneDataForm[key].name] = {
                         name: cloneDataForm[key].name,
                         error: true,
                         customText: "Заполните поле полностью",
                     };
-                } else if (cloneDataForm[key].name === 'email' && !regEmail.test(cloneDataForm[key].value)) {
+                } else if (cloneDataForm[key].type === 'email' && !regEmail.test(cloneDataForm[key].value)) {
                     isValid = false;
                     errors[cloneDataForm[key].name] = {
                         name: cloneDataForm[key].name,

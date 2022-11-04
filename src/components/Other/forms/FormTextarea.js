@@ -21,6 +21,13 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
         setDataForm(newDataForm);
     };
 
+    const removeComponentValue = () => {
+        let newDataForm = dataForm;
+        delete newDataForm[name];
+
+        setDataForm(newDataForm);
+    };
+
     const handleChange = (e) => {
         let newDataForm = dataForm;
         newDataForm[e.target.name] = {
@@ -50,7 +57,10 @@ const FormTextarea = ({setDataForm, dataForm, nameForm, errorForm, children, onC
 
     useEffect(() => {
         setInitalValue();
-    },[inputRef]);
+        return () => {
+            removeComponentValue();
+        }
+    }, []);
 
     return (
         <div className="form-input">

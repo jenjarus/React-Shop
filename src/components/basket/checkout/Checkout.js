@@ -11,13 +11,12 @@ import FormCheckbox from "../../Other/forms/FormCheckbox";
 const Checkout = () => {
     const dispatch = useDispatch();
     const checkoutItems = useSelector((store) => store.basket.items);
-    //const [loading, setLoading] = useState(false);
     const [viewDelivery, setViewDelivery] = useState(false);
+    const [successCheckoutPage, setSuccessCheckoutPage] = useState(false);
     const [productItems, setProductItems] = useState([]);
     const checkoutTotal = checkoutItems.reduce((partialSum, item) => partialSum + (item.price * item.qty), 0);
 
     const getCheckoutItems = async (items) => {
-        //setLoading(true);
         setProductItems([]);
 
         const dataItems = await Promise.all(items.map(async item => {
@@ -40,7 +39,6 @@ const Checkout = () => {
         }));
 
         setProductItems(dataItems);
-        //setLoading(false);
     };
 
     const getListItems = () => {
@@ -50,7 +48,7 @@ const Checkout = () => {
     };
 
     const RenderContent = () => {
-        if(checkoutItems.length) {
+        if(checkoutItems.length || successCheckoutPage) {
             return (
                 <div className="checkout">
                     <Form
@@ -128,15 +126,15 @@ const Checkout = () => {
                                 Ваше ФИО
                             </FormInput>
                             <FormInput
+                                type="phone"
                                 name="phone"
-                                format="+7 (###) ###-##-##"
-                                allowEmptyFormatting
-                                mask="_"
+                                mask="+7 (999) 999-99-99"
                                 required
                             >
                                 Ваш телефон
                             </FormInput>
                             <FormInput
+                                type="email"
                                 name="email"
                                 required
                             >
@@ -191,6 +189,7 @@ ${msgTotal}
         `;
 
         console.log(msgText);
+        setSuccessCheckoutPage(true);
     };
 
     const successCheckout = () => {

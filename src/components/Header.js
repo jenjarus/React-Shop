@@ -39,10 +39,9 @@ const Header = () => {
                         Ваше имя
                     </FormInput>
                     <FormInput
+                        type="phone"
                         name="phone"
-                        format="+7 (###) ###-##-##"
-                        allowEmptyFormatting
-                        mask="_"
+                        mask="+7 (999) 999-99-99"
                         required={true}
                     >
                         Ваш телефон

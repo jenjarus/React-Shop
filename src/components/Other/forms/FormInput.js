@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from "react";
-import { PatternFormat } from 'react-number-format';
+import InputMask from "react-input-mask";
 
 const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, type = 'text', ...props}) => {
     const {name, required, ...rest} = props;
@@ -8,16 +8,30 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
     const error = errorForm[name];
     const errorClass = errorForm[name] ? " form-input__error" : '';
     const inputId = nameForm + "-" + name;
-    const inputRefs = useRef(null);
+    const inputRef = useRef(null);
+
+    // Костыль из-за бага в react-input-mask
+    const setInputRef = (el) => {
+        if(!inputRef.current){
+            inputRef.current = el;
+        }
+    };
 
     const setInitalValue = () => {
         let newDataForm = dataForm;
-        newDataForm[inputRefs.current.name] = {
-            type: inputRefs.current.type,
-            name: inputRefs.current.name,
-            value: inputRefs.current.value,
-            required: inputRefs.current.required,
+        newDataForm[inputRef.current.name] = {
+            type: inputRef.current.type,
+            name: inputRef.current.name,
+            value: inputRef.current.value,
+            required: inputRef.current.required,
         };
+
+        setDataForm(newDataForm);
+    };
+
+    const removeComponentValue = () => {
+        let newDataForm = dataForm;
+        delete newDataForm[name];
 
         setDataForm(newDataForm);
     };
@@ -42,11 +56,11 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
     };
 
     const RenderInput = () => {
-        if(name === 'phone') {
-            return <PatternFormat type={type} className={focusedClass + errorClass} name={name} id={inputId}
-                                  required={required} onChange={handleChange} getInputRef={inputRefs} {...rest} />
+        if(type === 'phone') {
+            return <InputMask type={type} className={focusedClass + errorClass} name={name} id={inputId}
+                                  required={required} onChange={handleChange} inputRef={(el) => setInputRef(el)} {...rest} />
         } else {
-            return <input type={type} className={focusedClass + errorClass} name={name} id={inputId} required={required} onChange={handleChange} ref={inputRefs} {...rest} />
+            return <input type={type} className={focusedClass + errorClass} name={name} id={inputId} required={required} onChange={handleChange} ref={inputRef} {...rest} />
         }
     };
 
@@ -60,7 +74,10 @@ const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChan
 
     useEffect(() => {
         setInitalValue();
-    },[inputRefs]);
+        return () => {
+            removeComponentValue();
+        }
+    },[]);
 
     return (
         <div className="form-input">

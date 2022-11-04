@@ -21,6 +21,13 @@ const FormRadio = ({num, setDataForm, dataForm, nameForm, errorForm, children, o
         }
     };
 
+    const removeComponentValue = () => {
+        let newDataForm = dataForm;
+        delete newDataForm[name];
+
+        setDataForm(newDataForm);
+    };
+
     const handleChange = (e) => {
         let newDataForm = dataForm;
         newDataForm[e.target.name] = {
@@ -47,7 +54,10 @@ const FormRadio = ({num, setDataForm, dataForm, nameForm, errorForm, children, o
 
     useEffect(() => {
         setInitalValue();
-    }, [inputRef]);
+        return () => {
+            removeComponentValue();
+        }
+    }, []);
 
     return (
         <div className="form-radio">

@@ -23,6 +23,13 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
         }
     };
 
+    const removeComponentValue = () => {
+        let newDataForm = dataForm;
+        delete newDataForm[name];
+
+        setDataForm(newDataForm);
+    };
+
     const handleChange = (e) => {
         let newDataForm = dataForm;
         newDataForm[e.target.name] = {
@@ -51,7 +58,10 @@ const FormCheckbox = ({num, setDataForm, dataForm, nameForm, errorForm, children
 
     useEffect(() => {
         setInitalValue();
-    }, [inputRef]);
+        return () => {
+            removeComponentValue();
+        }
+    }, []);
 
     return (
         <div className="form-checkbox">
