@@ -34,6 +34,23 @@ header {
         }
       }
     }
+
+    &__auth {
+      @include flex;
+      margin: 0 -10px;
+
+      & > * {
+        margin: 0 10px;
+      }
+
+      &-login {
+        width: 123px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
   }
 }
 

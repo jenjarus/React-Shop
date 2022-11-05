@@ -1,6 +1,7 @@
 const initialState = {
     users: [
         {
+            id: '1667648315040',
             login: 'admin',
             password: '12345678',
             phone: '+7 (999) 999-99-99',

@@ -11,6 +11,9 @@ import FormCheckbox from "../../Other/forms/FormCheckbox";
 const Checkout = () => {
     const dispatch = useDispatch();
     const checkoutItems = useSelector((store) => store.basket.items);
+    const users = useSelector((store) => store.users.users);
+    const authId = useSelector((store) => store.authentication.id);
+    const userData = authId ? users.find(user => user.id === authId) : {};
     const [viewDelivery, setViewDelivery] = useState(false);
     const [successCheckoutPage, setSuccessCheckoutPage] = useState(false);
     const [productItems, setProductItems] = useState([]);
@@ -49,6 +52,10 @@ const Checkout = () => {
 
     const RenderContent = () => {
         if(checkoutItems.length || successCheckoutPage) {
+            const authName = authId ? userData.name : '';
+            const authPhone = authId ? userData.phone : '';
+            const authEmail = authId ? userData.email : '';
+
             return (
                 <div className="checkout">
                     <Form
@@ -122,6 +129,7 @@ const Checkout = () => {
                             <FormDiv classes="checkout-form__block-title">Данные покупателя</FormDiv>
                             <FormInput
                                 name="name"
+                                defaultValue={authName}
                             >
                                 Ваше ФИО
                             </FormInput>
@@ -130,6 +138,7 @@ const Checkout = () => {
                                 name="phone"
                                 mask="+7 (999) 999-99-99"
                                 required
+                                defaultValue={authPhone}
                             >
                                 Ваш телефон
                             </FormInput>
@@ -137,6 +146,7 @@ const Checkout = () => {
                                 type="email"
                                 name="email"
                                 required
+                                defaultValue={authEmail}
                             >
                                 Ваш e-mail
                             </FormInput>

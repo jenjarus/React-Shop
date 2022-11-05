@@ -3,7 +3,7 @@ import InputMask from "react-input-mask";
 
 const FormInput = ({setDataForm, dataForm, nameForm, errorForm, children, onChanges, type = 'text', ...props}) => {
     const {name, required, ...rest} = props;
-    const [focused, setFocused] = useState(false);
+    const [focused, setFocused] = useState(!!props.defaultValue);
     const focusedClass = focused ? "focused" : '';
     const error = errorForm[name];
     const errorClass = errorForm[name] ? " form-input__error" : '';

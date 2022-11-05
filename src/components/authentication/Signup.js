@@ -1,6 +1,8 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setSignup} from "../../actions/users";
+import {Login} from "../../actions/authentication";
 import Loading from "../Other/Loading";
 import FormInput from "../Other/forms/FormInput";
 import Form from "../Other/forms/Form";
@@ -8,21 +10,29 @@ import Form from "../Other/forms/Form";
 const Signup = () => {
     const dispatch = useDispatch();
     const users = useSelector((store) => store.users.users);
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [valueLogin, setValueLogin] = useState('');
     const [valuePass, setValuePass] = useState('');
     const [valuePassConf, setValuePassConf] = useState('');
 
     const sendSignupData = (data) => {
+        data['id'] = new Date().getTime();
         delete data["confirm-password"];
 
         dispatch(setSignup(data));
+        dispatch(Login(data['id']));
+
+        setTimeout(() => {
+            navigate('/');
+        }, 3000)
     };
 
     const successSignup = () => {
         return (
             <div className="form-success form-success--signup">
                 <div className="form-success__title">Регистрация прошла успешно</div>
+                <div className="form-success__subtitle">Вы успешно авторизовались</div>
             </div>
         )
     };

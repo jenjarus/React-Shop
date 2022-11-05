@@ -1,5 +1,7 @@
 import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import {Login} from "../../actions/authentication";
 import Loading from "../Other/Loading";
 import Form from "../Other/forms/Form";
 import FormInput from "../Other/forms/FormInput";
@@ -7,12 +9,19 @@ import FormInput from "../Other/forms/FormInput";
 const Signup = () => {
     const dispatch = useDispatch();
     const users = useSelector((store) => store.users.users);
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [valueLogin, setValueLogin] = useState('');
     const [valuePass, setValuePass] = useState('');
 
     const sendSigninData = (data) => {
-        //dispatch(setSignup(data));
+        const id = users.find(user => user.login === data.login).id;
+
+        dispatch(Login(id));
+
+        setTimeout(() => {
+            navigate('/');
+        }, 3000)
     };
 
     const successSignin = () => {

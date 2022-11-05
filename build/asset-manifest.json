@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-Shop/build/static/css/main.3dd3ca21.css",
-    "main.js": "/React-Shop/build/static/js/main.03f2c0ee.js",
+    "main.css": "/React-Shop/build/static/css/main.e48d21cf.css",
+    "main.js": "/React-Shop/build/static/js/main.91584d8b.js",
     "static/media/about-1.png": "/React-Shop/build/static/media/about-1.ea1b0471cc7df84dae89.png",
     "static/media/about-2.png": "/React-Shop/build/static/media/about-2.0062830a16032c7be368.png",
     "static/media/about-3.png": "/React-Shop/build/static/media/about-3.ee979d0941a869406016.png",
@@ -13,11 +13,11 @@
     "static/media/close.svg": "/React-Shop/build/static/media/close.101263b7602b1ba56d8ff162b8872206.svg",
     "static/media/plus.svg": "/React-Shop/build/static/media/plus.685b4c3f3ae86a0ecabb433cbd7bd943.svg",
     "static/media/minus.svg": "/React-Shop/build/static/media/minus.dff722e5aff502fb06e472e992160842.svg",
-    "main.3dd3ca21.css.map": "/React-Shop/build/static/css/main.3dd3ca21.css.map",
-    "main.03f2c0ee.js.map": "/React-Shop/build/static/js/main.03f2c0ee.js.map"
+    "main.e48d21cf.css.map": "/React-Shop/build/static/css/main.e48d21cf.css.map",
+    "main.91584d8b.js.map": "/React-Shop/build/static/js/main.91584d8b.js.map"
   },
   "entrypoints": [
-    "static/css/main.3dd3ca21.css",
-    "static/js/main.03f2c0ee.js"
+    "static/css/main.e48d21cf.css",
+    "static/js/main.91584d8b.js"
   ]
 }
