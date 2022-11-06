@@ -1,4 +1,5 @@
 import {Route, Routes} from "react-router-dom"
+
 import Header from './Header';
 import MainPage from "./pages/MainPage";
 import Catalog from './catalog/Catalog';
@@ -25,15 +26,15 @@ const Main = () => {
                 <div className="container">
                     <Routes>
                         <Route path="/" exact element={<MainPage/>}/>
+                            <Route path="/about" element={<About/>}/>
+                            <Route path="/contact" element={<Contact/>}/>
                         <Route path="/catalog" element={<Catalog/>}/>
-                        <Route path="/catalog/:id" element={<ProductPage/>}/>
+                            <Route path="/catalog/:id" element={<ProductPage/>}/>
                         <Route path="/basket" element={<Basket/>}/>
-                        <Route path="/basket/checkout/" element={<Checkout/>}/>
+                            <Route path="/basket/checkout/" element={<Checkout/>}/>
                         <Route path="/favorite" element={<Favorite/>}/>
                         <Route path="/signup" element={<Signup/>}/>
                         <Route path="/signin" element={<Signin/>}/>
-                        <Route path="/about" element={<About/>}/>
-                        <Route path="/contact" element={<Contact/>}/>
                         <Route path="*" element={<NotFound/>}/>
                     </Routes>
                 </div>

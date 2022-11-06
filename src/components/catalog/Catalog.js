@@ -1,10 +1,62 @@
 import React, {useEffect, useState} from 'react';
 import ProductCard from './productCard/ProductCard';
 import Loading from '../Other/Loading';
+import Sorting from "./Sorting/Sorting";
 
 const Catalog = () => {
     const [loading, setLoading] = useState(true);
     const [catalogItems, setCatalogItems] = useState([]);
+    const [sortFlag, setSortFlag] = useState('nameASC');
+
+    // Функции для сортировки
+    const sortFunc = () => {
+        let sortFunc;
+        const sortNameASC = (prev, next) => {
+            const prevSort = prev.name;
+            const nextSort = next.name;
+
+            if (prevSort > nextSort) {
+                return 1;
+            } else if (prevSort < nextSort) {
+                return -1;
+            }
+            return 0;
+        };
+        const sortNameDESC = (prev, next) => {
+            const prevSort = prev.name;
+            const nextSort = next.name;
+
+            if (nextSort > prevSort) {
+                return 1;
+            } else if (nextSort < prevSort) {
+                return -1;
+            }
+            return 0;
+        };
+        const sortPriceASC = (prev, next) => prev.ibu - next.ibu;
+        const sortPriceDESC = (prev, next) => next.ibu - prev.ibu;
+
+        // Выбираем функцию для сортировки
+        switch (sortFlag) {
+            case 'nameASC':
+                sortFunc = sortNameASC;
+                break;
+            case 'nameDESC':
+                sortFunc = sortNameDESC;
+                break;
+            case 'priceASC':
+                sortFunc = sortPriceASC;
+                break;
+            case 'priceDESC':
+                sortFunc = sortPriceDESC;
+                break;
+            default:
+                sortFunc = sortNameASC;
+                break;
+        }
+
+        return sortFunc;
+    };
 
     const getCatalogData = async () => {
         setLoading(true);
@@ -23,10 +75,15 @@ const Catalog = () => {
 
     const renderContent = () => {
         if (!loading) {
+            const sortsCatalogItems = catalogItems.sort(sortFunc());
+
             return (
-                <div className="catalog-items">
-                    {catalogItems.map(el => <ProductCard key={el.id} data={el}/>)}
-                </div>
+                <>
+                    <Sorting sortFlag={sortFlag} setSortFlag={setSortFlag}/>
+                    <div className="catalog-items">
+                        {sortsCatalogItems.map(el => <ProductCard key={el.id} data={el}/>)}
+                    </div>
+                </>
             )
         } else {
             return <Loading/>
@@ -35,7 +92,7 @@ const Catalog = () => {
 
     useEffect(() => {
         getCatalogData();
-    }, []);
+    }, [sortFlag]);
 
     return (
         <>

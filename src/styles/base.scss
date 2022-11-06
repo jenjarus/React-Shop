@@ -76,6 +76,68 @@ input, textarea {
   outline: none;
 }
 
+.select {
+  position: relative;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    padding-right: 0;
+    border: 1px solid $red_color;
+    cursor: pointer;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+
+      svg {
+        width: 24px;
+        height: auto;
+      }
+
+      .open & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__items {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 5px 10px;
+    border: 1px solid $red_color;
+    border-top: 0;
+    background: #fff;
+    z-index: 9;
+
+    .open & {
+      display: block;
+    }
+  }
+
+  &__item {
+    margin: 5px 0;
+    white-space: nowrap;
+    transition: $transition_link;
+    cursor: pointer;
+
+    &.selected {
+      color: $red_color;
+    }
+
+    &:hover {
+      color: $dark_red_color;
+    }
+  }
+}
+
 .loading {
   position: fixed;
   left: 50%;

@@ -1,0 +1,25 @@
+.catalog-sorting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $border_grey;
+  margin-bottom: 15px;
+
+  &__text {
+    margin-right: 15px;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+
+    .active {
+      color: $red_color;
+    }
+  }
+
+  .select--sorting {
+    width: 200px;
+  }
+}
