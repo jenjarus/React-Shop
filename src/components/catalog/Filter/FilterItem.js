@@ -1,23 +1,19 @@
 import React from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {changeFilters} from "../../../actions/catalog";
 
-const FilterItem = ({num, data, nameFilter, filtersSelect, setFiltersSelect}) => {
-    const checkedSelected = filtersSelect[nameFilter].includes(data) ? 'checked' : '';
+const FilterItem = ({num, data, nameFilter}) => {
+    const dispatch = useDispatch();
+    const filterSelect = useSelector((store) => store.catalog.filters);
+    const checkedSelected = filterSelect[nameFilter]?.includes(data + '') ? 'checked' : '';
 
-    const changeFilter = () => {
-        let newFiltersSelect = {};
-        Object.assign(newFiltersSelect, filtersSelect);
-        if (newFiltersSelect[nameFilter].includes(data)) {
-            newFiltersSelect[nameFilter] = newFiltersSelect[nameFilter].filter(el => el !== data)
-        } else {
-            newFiltersSelect[nameFilter].push(data);
-        }
-
-        setFiltersSelect(newFiltersSelect);
+    const changeFilter = (e) => {
+        dispatch(changeFilters(e, nameFilter));
     };
 
     return (
         <div className="form-checkbox">
-            <input type="checkbox" id={nameFilter + num} onChange={changeFilter} checked={checkedSelected}/>
+            <input type="checkbox" id={nameFilter + num} value={data} onChange={changeFilter} checked={checkedSelected}/>
             <label htmlFor={nameFilter + num}>{data}</label>
         </div>
     )

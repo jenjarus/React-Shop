@@ -1,4 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {changeSortFlag} from "../../../actions/catalog";
 import {ReactComponent as Arrow} from '../../../images/icons/chevron-down.svg';
 
 const arrSortFlag = [
@@ -8,9 +10,11 @@ const arrSortFlag = [
     {flag: 'priceDESC', text: 'Сначала дорогие'}
 ];
 
-const Sorting = ({sortFlag, setSortFlag}) => {
+const Sorting = () => {
+    const dispatch = useDispatch();
+    const sortFlag = useSelector((store) => store.catalog.sortFlag);
+    const sortText = arrSortFlag.find(el => el.flag === sortFlag).text;
     const [openSelect, setOpenSelect] = useState(false);
-    const aaa = arrSortFlag.find(el => el.flag === sortFlag).text;
     const openClass = openSelect ? " open" : "";
 
     return (
@@ -18,7 +22,7 @@ const Sorting = ({sortFlag, setSortFlag}) => {
             <div className="catalog-sorting__select">
                 <div className="catalog-sorting__text">Сортировать по</div>
                 <div className={"select select--sorting" + openClass}>
-                    <div className="select__text" onClick={() => setOpenSelect(!openSelect)}>{aaa}
+                    <div className="select__text" onClick={() => setOpenSelect(!openSelect)}>{sortText}
                         <span className="select__text-icon">
                             <Arrow />
                         </span>
@@ -27,10 +31,10 @@ const Sorting = ({sortFlag, setSortFlag}) => {
                         {arrSortFlag.map(el => {
                             const selectedClass = el.flag === sortFlag ? " selected" : "";
 
-                                return (<li key={el.flag} className={"select__item" + selectedClass} onClick={() => {
-                                    setSortFlag(el.flag);
-                                    setOpenSelect(!openClass);
-                                }}>{el.text}</li>)
+                            return (<li key={el.flag} className={"select__item" + selectedClass} onClick={() => {
+                                dispatch(changeSortFlag(el.flag));
+                                setOpenSelect(!openClass);
+                            }}>{el.text}</li>)
                             }
                         )}
                     </ul>

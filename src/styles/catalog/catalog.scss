@@ -12,6 +12,10 @@
       font-size: 18px;
       font-weight: 700;
     }
+
+    &__reset {
+      width: 100%;
+    }
   }
 
   &-content {
@@ -32,10 +36,33 @@
 
   &__items {
     display: none;
+
+    &--price {
+      & .form-input {
+        margin: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+        input[type='number'] {
+          -moz-appearance: textfield;
+        }
+      }
+    }
   }
 
   &.open &__items {
     display: block;
+
+    &--price {
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__title {
