@@ -1,26 +1,27 @@
 import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {initPriceFilter} from "../../actions/catalog";
 import ProductCard from './productCard/ProductCard';
 import Loading from '../Other/Loading';
 import Sorting from "./Sorting/Sorting";
 import Filters from "./Filter/Filters";
 
-const arrFilters = {
-    abv: [],
-    ebc: [],
-    ibu: [],
-};
-
 const Catalog = () => {
+    const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
     const [catalogItems, setCatalogItems] = useState([]);
-    const [sortFlag, setSortFlag] = useState('nameASC');
-    const [filtersSelect, setFiltersSelect] = useState(arrFilters);
+    const sortFlag = useSelector((store) => store.catalog.sortFlag);
+    const filtersSelect = useSelector((store) => store.catalog.filters);
+    const minState = useSelector((store) => store.catalog.minPrice);
+    const maxState = useSelector((store) => store.catalog.maxPrice);
 
     // Фильтрация выводимого товара
     const filterCatalogItems = (data) => {
+        data = data.filter(el => el['ibu'] >= minState && el['ibu'] <= maxState);
+
         for (let key in filtersSelect) {
             if (Object.keys(filtersSelect[key]).length !== 0) {
-                data = data.filter(el => filtersSelect[key].includes(el[key]));
+                data = data.filter(el => filtersSelect[key].includes(el[key] + ''));
             }
         }
 
@@ -86,6 +87,10 @@ const Catalog = () => {
             const data = await apiResponse.json();
 
             setCatalogItems(data);
+
+            const arrPrice = data.map(el => +el['ibu']);
+            dispatch(initPriceFilter(Math.min(...arrPrice), Math.max(...arrPrice)));
+
             setLoading(false);
         } catch (err) {
             console.log(err);
@@ -99,9 +104,9 @@ const Catalog = () => {
 
             return (
                 <div className="catalog">
-                    <Filters data={catalogItems} filtersSelect={filtersSelect} setFiltersSelect={setFiltersSelect} />
+                    <Filters data={catalogItems} />
                     <div className="catalog-content">
-                        <Sorting sortFlag={sortFlag} setSortFlag={setSortFlag}/>
+                        <Sorting />
                         <div className="catalog-items">
                             {sortsCatalogItems.length ? sortsCatalogItems.map(el => <ProductCard key={el.id} data={el}/>) : <p>Товаров не найдено</p>}
                         </div>

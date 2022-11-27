@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-Shop/build/static/css/main.e48d21cf.css",
-    "main.js": "/React-Shop/build/static/js/main.91584d8b.js",
+    "main.css": "/React-Shop/build/static/css/main.5a19f175.css",
+    "main.js": "/React-Shop/build/static/js/main.c2aed276.js",
     "static/media/about-1.png": "/React-Shop/build/static/media/about-1.ea1b0471cc7df84dae89.png",
     "static/media/about-2.png": "/React-Shop/build/static/media/about-2.0062830a16032c7be368.png",
     "static/media/about-3.png": "/React-Shop/build/static/media/about-3.ee979d0941a869406016.png",
@@ -12,12 +12,13 @@
     "static/media/favorite.svg": "/React-Shop/build/static/media/favorite.f2a3df532701b22c8de3e4e0a0543072.svg",
     "static/media/close.svg": "/React-Shop/build/static/media/close.101263b7602b1ba56d8ff162b8872206.svg",
     "static/media/plus.svg": "/React-Shop/build/static/media/plus.685b4c3f3ae86a0ecabb433cbd7bd943.svg",
+    "static/media/chevron-down.svg": "/React-Shop/build/static/media/chevron-down.f5e9b81d941396bc488448e663d0accb.svg",
     "static/media/minus.svg": "/React-Shop/build/static/media/minus.dff722e5aff502fb06e472e992160842.svg",
-    "main.e48d21cf.css.map": "/React-Shop/build/static/css/main.e48d21cf.css.map",
-    "main.91584d8b.js.map": "/React-Shop/build/static/js/main.91584d8b.js.map"
+    "main.5a19f175.css.map": "/React-Shop/build/static/css/main.5a19f175.css.map",
+    "main.c2aed276.js.map": "/React-Shop/build/static/js/main.c2aed276.js.map"
   },
   "entrypoints": [
-    "static/css/main.e48d21cf.css",
-    "static/js/main.91584d8b.js"
+    "static/css/main.5a19f175.css",
+    "static/js/main.c2aed276.js"
   ]
 }

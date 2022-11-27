@@ -4,6 +4,7 @@ import favorite from './favorite';
 import viewed from './viewed';
 import users from './users';
 import authentication from './authentication';
+import catalog from './catalog';
 import {loadState, saveState} from "./cookie";
 
 const reducers = combineReducers({
@@ -12,6 +13,7 @@ const reducers = combineReducers({
     viewed: viewed,
     users: users,
     authentication: authentication,
+    catalog: catalog,
 });
 
 const cookiesState = {

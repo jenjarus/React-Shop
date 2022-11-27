@@ -1,64 +1,32 @@
-import React, {useEffect, useState} from "react";
-//import FilterPrice from "./FilterPrice";
+import {useDispatch} from "react-redux";
+import {resetFilters} from "../../../actions/catalog";
 import Filter from "./Filter";
+import FilterPrice from "./FilterPrice";
 
-const arrFilters = {
-    abv: [],
-    ebc: [],
-    ibu: [],
-};
-
-const Filters = ({data, filtersSelect, setFiltersSelect}) => {
-    const [filters, setFilters] = useState(arrFilters);
-
-    // Получаем все значения для фильтрации
-    const filtersData = () => {
-        let newFilters = filters;
-
-        data.map(el => {
-            for (let key in newFilters) {
-                if(newFilters[key]) {
-                    newFilters[key].push(el[key])
-                }
-            }
-        });
-
-        setFilters(newFilters);
-    };
-
-    useEffect(() => {
-        filtersData();
-    }, [data]);
+const Filters = ({data}) => {
+    const dispatch = useDispatch();
 
     return (
         <div className="catalog-sidebar">
             <div className="catalog-sidebar__title">Фильтр</div>
-            {/*<FilterPrice />*/}
+            <FilterPrice />
             <Filter
-                data={filters.abv}
+                data={data}
                 title={"ABV"}
-                nameClassComp={"size"}
                 nameFilter={"abv"}
                 open={true}
-                filtersSelect={filtersSelect}
-                setFiltersSelect={setFiltersSelect}
             />
             <Filter
-                data={filters.ebc}
+                data={data}
                 title={"EBC"}
-                nameClassComp={"color"}
                 nameFilter={"ebc"}
-                filtersSelect={filtersSelect}
-                setFiltersSelect={setFiltersSelect}
             />
             <Filter
-                data={filters.ibu}
+                data={data}
                 title={"IBU"}
-                nameClassComp={"material"}
                 nameFilter={"ibu"}
-                filtersSelect={filtersSelect}
-                setFiltersSelect={setFiltersSelect}
             />
+            <button className="catalog-sidebar__reset btn" onClick={() => dispatch(resetFilters())}>Сбросить</button>
         </div>
     )
 };
