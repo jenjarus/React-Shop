@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/React-Shop/build/static/css/main.5a19f175.css",
-    "main.js": "/React-Shop/build/static/js/main.c2aed276.js",
+    "main.css": "/React-Shop/build/static/css/main.a727bbbe.css",
+    "main.js": "/React-Shop/build/static/js/main.230ee742.js",
     "static/media/about-1.png": "/React-Shop/build/static/media/about-1.ea1b0471cc7df84dae89.png",
     "static/media/about-2.png": "/React-Shop/build/static/media/about-2.0062830a16032c7be368.png",
     "static/media/about-3.png": "/React-Shop/build/static/media/about-3.ee979d0941a869406016.png",
@@ -14,11 +14,11 @@
     "static/media/plus.svg": "/React-Shop/build/static/media/plus.685b4c3f3ae86a0ecabb433cbd7bd943.svg",
     "static/media/chevron-down.svg": "/React-Shop/build/static/media/chevron-down.f5e9b81d941396bc488448e663d0accb.svg",
     "static/media/minus.svg": "/React-Shop/build/static/media/minus.dff722e5aff502fb06e472e992160842.svg",
-    "main.5a19f175.css.map": "/React-Shop/build/static/css/main.5a19f175.css.map",
-    "main.c2aed276.js.map": "/React-Shop/build/static/js/main.c2aed276.js.map"
+    "main.a727bbbe.css.map": "/React-Shop/build/static/css/main.a727bbbe.css.map",
+    "main.230ee742.js.map": "/React-Shop/build/static/js/main.230ee742.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a19f175.css",
-    "static/js/main.c2aed276.js"
+    "static/css/main.a727bbbe.css",
+    "static/js/main.230ee742.js"
   ]
 }

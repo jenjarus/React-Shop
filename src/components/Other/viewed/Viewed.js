@@ -4,7 +4,6 @@ import ProductCard from "../../catalog/productCard/ProductCard";
 
 const Viewed = () => {
     const cartItems = useSelector((store) => store.viewed.items);
-    const favoriteItems = useSelector((store) => store.favorite.items);
     const [loading, setLoading] = useState(false);
     const [viewedItems, setViewedItems] = useState([]);
 
@@ -33,7 +32,7 @@ const Viewed = () => {
             if (!loading) {
                 return (
                     <div className="viewed-items">
-                        {viewedItems.reverse().map(el => <ProductCard key={el.id} data={el}/>)}
+                        {viewedItems.map(el => <ProductCard key={el.id} data={el}/>)}
                     </div>
                 )
             }
@@ -42,7 +41,7 @@ const Viewed = () => {
 
     useEffect(() => {
         getViewedItems(cartItems)
-    }, [cartItems.length, favoriteItems.length]);
+    }, [cartItems]);
 
     return (
         <div className="viewed">
