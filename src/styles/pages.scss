@@ -31,19 +31,45 @@
 // Страница "О компании"
 .page-about {
   .page-cols {
+
+    @media(max-width: 992px) {
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+
     .page-col__2 {
       width: auto;
     }
 
     .page-img {
+      @media(max-width: 992px) {
+        text-align: center;
+      }
+
       img {
         max-width: 400px;
+
+        @media(max-width: 767px) {
+          max-width: 100%;
+        }
       }
     }
   }
 }
 
 // Страница "Контакты"
+.page-contact {
+  @media(max-width: 992px) {
+    .page-cols {
+      flex-direction: column-reverse;
+    }
+
+    .page-col__2 {
+      width: 100%;
+    }
+  }
+}
+
 .contact-map {
   width: 100%;
   height: auto;
@@ -51,6 +77,10 @@
 
 .contacts__items {
   margin: -10px;
+
+  @media(max-width: 992px) {
+    margin-bottom: 15px;
+  }
 
   .contacts__item {
     padding: 10px;

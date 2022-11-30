@@ -11,6 +11,11 @@
   box-shadow: 10px 10px 0 $red_color;
   z-index: 99;
 
+  @media(max-width: 767px) {
+    max-width: 300px;
+    margin-left: -5px;
+  }
+
   &__close {
     position: absolute;
     top: 12px;

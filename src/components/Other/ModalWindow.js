@@ -14,7 +14,7 @@ const ModalWindow = ({title, isOpen, closeModal, classModal, children}) => {
                     {children}
                 </div>
             </div>
-            <div className="modal-window-bg" onClick={closeModal}></div>
+            <div className="modal-window-bg" onClick={closeModal} />
         </>,
         document.body
     )

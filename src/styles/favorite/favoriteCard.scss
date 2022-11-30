@@ -2,6 +2,18 @@
   width: 25%;
   padding: 10px;
 
+  @media(max-width: 992px) {
+    width: 33%;
+  }
+
+  @media(max-width: 767px) {
+    width: 50%;
+  }
+
+  @media(max-width: 499px) {
+    width: 100%;
+  }
+
   &__wrapper {
     height: 100%;
     position: relative;
@@ -57,7 +69,7 @@
   }
 
   &__name {
-    height: 38px; /*Vremenno*/
+    height: 38px;
     margin: 15px 0;
     font-size: 16px;
     line-height: 19px;

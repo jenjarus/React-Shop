@@ -10,6 +10,7 @@ const Catalog = () => {
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
     const [catalogItems, setCatalogItems] = useState([]);
+    const [openSidebar, setOpenSidebar] = useState(false);
     const sortFlag = useSelector((store) => store.catalog.sortFlag);
     const filtersSelect = useSelector((store) => store.catalog.filters);
     const minState = useSelector((store) => store.catalog.minPrice);
@@ -104,9 +105,14 @@ const Catalog = () => {
 
             return (
                 <div className="catalog">
-                    <Filters data={catalogItems} />
+                    <Filters
+                        data={catalogItems}
+                        openSidebar={openSidebar}
+                        setOpenSidebar={setOpenSidebar}
+                    />
                     <div className="catalog-content">
                         <Sorting />
+                        <button className="btn btn--filter__mobile" onClick={() => setOpenSidebar(!openSidebar)}>Фильтр</button>
                         <div className="catalog-items">
                             {sortsCatalogItems.length ? sortsCatalogItems.map(el => <ProductCard key={el.id} data={el}/>) : <p>Товаров не найдено</p>}
                         </div>

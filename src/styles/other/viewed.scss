@@ -15,5 +15,17 @@
 
   .catalog-item {
     width: 25%;
+
+    @media(max-width: 992px) {
+      width: 33%;
+    }
+
+    @media(max-width: 767px) {
+      width: 50%;
+    }
+
+    @media(max-width: 499px) {
+      width: 100%;
+    }
   }
 }
