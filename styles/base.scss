@@ -1,0 +1,156 @@
+//@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+$base-font: "Roboto";
+
+$black_color: #1b1b1b;
+$red_color: #FF3942;
+$dark_red_color: #9C2329;
+$background_color: #ffffff;
+$background_grey: #E9E9E9;
+$border_grey: #F5F5F5;
+$transition_link: all 0.3s ease;
+
+@mixin flex() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+body {
+  font-family: $base-font;
+  color: $black_color;
+}
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  @media(max-width: 1200px) {
+    max-width: 992px;
+  }
+  @media(max-width: 992px) {
+    max-width: 768px;
+  }
+  @media(max-width: 992px) {
+    max-width: none;
+  }
+}
+h1 {
+  margin: 0 0 30px;
+}
+
+main {
+  flex-grow: 1;
+  padding: 50px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 15px;
+  border: 1px solid $red_color;
+  background-color: $red_color;
+  font-size: 13px;
+  line-height: 15px;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: $transition_link;
+  &:hover {
+    background-color: $dark_red_color;
+    border-color: $dark_red_color;
+  }
+
+  &--transparent {
+    background-color: transparent;
+    color: $red_color;
+
+    &:hover {
+      background-color: $red_color;
+      border-color: $red_color;
+      color: #fff;
+    }
+  }
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid $border_grey;
+  outline: none;
+}
+
+.select {
+  position: relative;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    padding-right: 0;
+    border: 1px solid $red_color;
+    cursor: pointer;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+
+      svg {
+        width: 24px;
+        height: auto;
+      }
+
+      .open & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__items {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 5px 10px;
+    border: 1px solid $red_color;
+    border-top: 0;
+    background: #fff;
+    z-index: 9;
+
+    .open & {
+      display: block;
+    }
+  }
+
+  &__item {
+    margin: 5px 0;
+    white-space: nowrap;
+    transition: $transition_link;
+    cursor: pointer;
+
+    &.selected {
+      color: $red_color;
+    }
+
+    &:hover {
+      color: $dark_red_color;
+    }
+  }
+}
+
+.loading {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
