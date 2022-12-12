@@ -6,6 +6,7 @@ import {Login} from "../../actions/authentication";
 import Loading from "../../components/Other/Loading";
 import FormInput from "../../components/Other/forms/FormInput";
 import Form from "../../components/Other/forms/Form";
+import Head from "next/head";
 
 const Signup = () => {
     const dispatch = useDispatch();
@@ -132,6 +133,11 @@ const Signup = () => {
 
     return (
         <>
+            <Head>
+                <title>Регистрация | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1 className="page-title">Регистрация</h1>
             {renderContent()}
         </>

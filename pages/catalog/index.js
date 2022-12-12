@@ -5,6 +5,7 @@ import ProductCard from '../../components/productCard/ProductCard';
 import Loading from '../../components/Other/Loading';
 import Sorting from "../../components/Sorting/Sorting";
 import Filters from "../../components/Filter/Filters";
+import Head from "next/head";
 
 const Catalog = () => {
     const dispatch = useDispatch();
@@ -130,6 +131,12 @@ const Catalog = () => {
 
     return (
         <>
+            <Head>
+                <title>Каталог | Черное красное - магазин пива</title>
+                <meta name="keywords" content="Черное красное, магазин пива, магазин, пиво, Каталог, большой ассортимент, низкие цены" />
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1 className="page-title">Каталог</h1>
             {renderContent()}
         </>

@@ -3,6 +3,7 @@ import {useSelector} from "react-redux";
 import Link from 'next/link';
 import BasketCard from "../../components/basketCard/basketCard";
 import Loading from "../../components/Other/Loading";
+import Head from "next/head";
 
 
 const Basket = () => {
@@ -68,6 +69,11 @@ const Basket = () => {
 
     return (
         <>
+            <Head>
+                <title>Корзина | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1 className="page-title">Корзина</h1>
             {renderContent()}
         </>

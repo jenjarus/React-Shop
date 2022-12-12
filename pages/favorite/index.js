@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import FavoriteCard from "../../components/favoriteCard/FavoriteCard";
 import Loading from "../../components/Other/Loading";
+import Head from "next/head";
 
 
 const Favorite = () => {
@@ -57,6 +58,11 @@ const Favorite = () => {
 
     return (
         <>
+            <Head>
+                <title>Избранное | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1 className="page-title">Избранное</h1>
             {renderContent()}
         </>

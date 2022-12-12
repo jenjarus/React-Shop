@@ -99,6 +99,7 @@ const Form = ({nameForm = '', textBtn = 'Отправить', successText, sendM
             <div className="form-success">
                 <div className="form-success__title">Сообщение успешно отправленно</div>
                 <div className="form-success__text">Мы свяжемся с вами в ближайшее время.</div>
+                <div className="form-success__text">(результат в консоле)</div>
             </div>
         )
     }

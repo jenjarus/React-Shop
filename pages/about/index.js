@@ -3,10 +3,18 @@ import imgOne from '../../images/about/about-1.png';
 import imgTwo from '../../images/about/about-2.png';
 import imgThree from '../../images/about/about-3.png';
 import imgFour from '../../images/about/about-4.png';
+import Head from "next/head";
+import React from "react";
 
 const About = () => {
     return (
         <>
+            <Head>
+                <title>О компании | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <meta name="keywords" content="Черное красное, магазин пива, магазин, пиво, о компании" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1>О компании</h1>
             <div className="page page-about">
                 <p className="page-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto

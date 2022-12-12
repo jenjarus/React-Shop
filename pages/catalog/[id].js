@@ -10,6 +10,7 @@ import ModalWindow from "../../components/Other/ModalWindow";
 import InputQty from "../../components/Other/InputQty";
 import Loading from "../../components/Other/Loading";
 import IconFavorite from "../../images/icons/favorite.svg";
+import Head from "next/head";
 
 const ProductPage = () => {
     const router = useRouter();
@@ -94,6 +95,12 @@ const ProductPage = () => {
         if (!loading) {
             return (
                 <>
+                    <Head>
+                        <title>{productData.name} | Черное красное - магазин пива</title>
+                        <meta name="keywords" content={`Черное красное, магазин пива, магазин, пиво, Каталог, большой ассортимент, низкие цены, ${productData.name}`} />
+                        <meta name="description" content={`${productData.name}. Черное красное - магазин пива`} />
+                        <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+                    </Head>
                     <h1>{productData.name}</h1>
                     <div className="page page-product">
                         <div className="page-cols">
@@ -162,6 +169,12 @@ const ProductPage = () => {
 
     return (
         <>
+            <Head>
+                <title>Черное красное - магазин пива</title>
+                <meta name="keywords" content={`Черное красное, магазин пива, магазин, пиво, Каталог, большой ассортимент, низкие цены`} />
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             {renderContent()}
         </>
     );

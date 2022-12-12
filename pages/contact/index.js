@@ -1,8 +1,16 @@
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
+import Head from "next/head";
+import React from "react";
 
 const Contact = () => {
     return (
         <>
+            <Head>
+                <title>Контакты | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <meta name="keywords" content="Черное красное, магазин пива, магазин, пиво, Контакты" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1>Контакты</h1>
             <div className="page page-contact">
                 <div className="page-cols">

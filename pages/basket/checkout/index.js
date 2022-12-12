@@ -7,6 +7,7 @@ import FormInput from "../../../components/Other/forms/FormInput";
 import FormTextarea from "../../../components/Other/forms/FormTextarea";
 import FormRadio from "../../../components/Other/forms/FormRadio";
 import FormCheckbox from "../../../components/Other/forms/FormCheckbox";
+import Head from "next/head";
 
 const Checkout = () => {
     const dispatch = useDispatch();
@@ -207,6 +208,7 @@ ${msgTotal}
             <div className="form-success form-success--checkout">
                 <div className="form-success__title">Спасибо за покупку</div>
                 <div className="form-success__text">Мы свяжемся с вами в ближайшее время.</div>
+                <div className="form-success__text">(результат в консоле)</div>
             </div>
         )
     };
@@ -217,6 +219,11 @@ ${msgTotal}
 
     return (
         <>
+            <Head>
+                <title>Оформление заказа | Черное красное - магазин пива</title>
+                <meta name="description" content="Черное красное - магазин пива" />
+                <link rel="icon" href={`${process.env.NEXT_PUBLIC_FAVICON}/favicon.ico`} />
+            </Head>
             <h1 className="page-title">Оформление заказа</h1>
             {RenderContent()}
         </>
