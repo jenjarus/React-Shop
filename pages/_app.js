@@ -1,5 +1,7 @@
 import '../styles/reset.css';
 import '../styles/fonts.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import '../styles/styles.scss';
 import {Provider} from 'react-redux';
 import React from "react";

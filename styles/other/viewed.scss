@@ -14,7 +14,8 @@
   }
 
   .catalog-item {
-    width: 25%;
+    width: 100%;
+    /*width: 25%;
 
     @media(max-width: 992px) {
       width: 33%;
@@ -26,6 +27,42 @@
 
     @media(max-width: 499px) {
       width: 100%;
+    }*/
+  }
+
+  .slick-arrow {
+    &:before {
+      color: $red_color;
+      transition: $transition_link;
+      opacity: 1;
+    }
+    &:hover:before {
+      color: $dark_red_color;
+    }
+  }
+  .slick-dots {
+    li {
+      width: 10px;
+      height: 10px;
+
+      button {
+        width: 10px;
+        height: 10px;
+        background: $red_color;
+        border-radius: 50%;
+        padding: 0;
+        transition: $transition_link;
+
+        &:before {
+          content: normal;
+        }
+      }
+
+      &.slick-active, &:hover {
+        button {
+          background: $dark_red_color;
+        }
+      }
     }
   }
 }

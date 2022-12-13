@@ -16,16 +16,14 @@ const Contact = () => {
                 <div className="page-cols">
                     <div className="page-col__2">
                         <div className="contact-map">
-                            <YMaps query={{
-                                ns: 'use-load-option',
-                                load: 'control.ZoomControl,control.FullscreenControl,geoObject.addon.balloon'
-                            }}>
+                            <YMaps>
                                 <Map
-                                    state={{
+                                    defaultState={{
                                         center: [55.76, 37.64],
                                         zoom: 10,
                                         controls: ['zoomControl', 'fullscreenControl']
                                     }}
+                                    modules={["package.full"]}
                                     height="500px"
                                     width="100%"
                                 >
