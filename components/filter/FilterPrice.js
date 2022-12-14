@@ -63,7 +63,7 @@ const FilterPrice = () => {
                 trackClassName="range-slider__track"
                 min={minInit}
                 max={maxInit}
-                defaultValue={[minPrice, maxPrice]}
+                value={[minPrice, maxPrice]}
                 pearling
                 minDistance={1}
                 onChange={onChangeRange}

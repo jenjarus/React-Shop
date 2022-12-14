@@ -54,6 +54,10 @@
       opacity: 1;
     }
 
+    @media(max-width: 992px) {
+      opacity: 1;
+    }
+
     &.active &-btn {
       background-color: $dark_red_color;
       border-color: $dark_red_color;

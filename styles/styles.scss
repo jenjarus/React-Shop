@@ -2,7 +2,9 @@
 @import "header";
 @import "footer";
 @import "pages";
-@import "mainPage";
+
+@import "mainPage/mainPage";
+@import "mainPage/consultForm";
 
 @import "other/viewed";
 @import "other/inputQty";

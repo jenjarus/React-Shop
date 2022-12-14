@@ -10,7 +10,7 @@ const Viewed = () => {
 
     const settingsSlider = {
         dots: true,
-        arrows: true,
+        arrows: false,
         infinite: true,
         slidesToShow: 4,
         responsive: [
@@ -19,7 +19,6 @@ const Viewed = () => {
                 settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
-                    arrows: false,
                 }
             },
             {

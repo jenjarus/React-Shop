@@ -3,8 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {initPriceFilter} from "../../actions/catalog";
 import ProductCard from '../../components/productCard/ProductCard';
 import Loading from '../../components/Other/Loading';
-import Sorting from "../../components/Sorting/Sorting";
-import Filters from "../../components/Filter/Filters";
+import Sorting from "../../components/sorting/Sorting";
+import Filters from "../../components/filter/Filters";
 import Head from "next/head";
 
 const Catalog = () => {

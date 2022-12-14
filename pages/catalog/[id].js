@@ -181,3 +181,26 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
+
+export async function getStaticProps({ params }) {
+    const res = await fetch(`https://api.punkapi.com/v2/beers/${params.id}`);
+    const data = await res.json();
+
+    return {
+        props: {data},
+    }
+}
+
+export const getStaticPaths = async () => {
+    const res = await fetch(`https://api.punkapi.com/v2/beers/`);
+    const data = await res.json();
+
+    const paths = data.map((item) => ({
+        params: { id: item.id.toString() },
+    }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+};

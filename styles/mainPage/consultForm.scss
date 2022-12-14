@@ -1,0 +1,45 @@
+.form__consult {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0 20px;
+  padding: 20px 30px;
+  background: $background_color;
+  border: 1px solid $red_color;
+  box-shadow: 10px 10px 0 $red_color;
+
+  &-wrapper {
+    max-width: 950px;
+  }
+
+  &-title {
+    padding-bottom: 20px;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  &-line {
+    display: flex;
+    align-items: center;
+    margin: 0 -15px;
+
+    @media(max-width: 767px) {
+      flex-direction: column;
+    }
+
+    .form-input {
+      width: 100%;
+      margin: 15px 15px;
+    }
+  }
+
+  .consult--submit {
+    margin: 10px -15px 0;
+    text-align: center;
+
+    .consult-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
