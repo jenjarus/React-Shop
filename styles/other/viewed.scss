@@ -8,9 +8,13 @@
   }
 
   &-items {
-    display: flex;
+    /*display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: wrap;*/
+  }
+
+  .slick-track {
+    margin-left: 0;
   }
 
   .catalog-item {

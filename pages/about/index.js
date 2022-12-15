@@ -1,8 +1,8 @@
-import Image from 'next/image'
+/*import Image from 'next/image'
 import imgOne from '../../images/about/about-1.png';
 import imgTwo from '../../images/about/about-2.png';
 import imgThree from '../../images/about/about-3.png';
-import imgFour from '../../images/about/about-4.png';
+import imgFour from '../../images/about/about-4.png';*/
 import Head from "next/head";
 import React from "react";
 
@@ -26,7 +26,7 @@ const About = () => {
                     aspernatur autem, commodi cumque eligendi eum ipsum itaque, laudantium modi obcaecati possimus quam
                     quia quo reprehenderit sunt vitae voluptatem?</p>
                 <div className="page-img">
-                    <Image src={imgOne} alt="about" width="1140" height="380"/>
+                    <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-1.png`} alt="about" />
                 </div>
                 <p className="page-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto
                     asperiores aspernatur autem, commodi cumque eligendi eum ipsum itaque, laudantium modi obcaecati
@@ -36,7 +36,7 @@ const About = () => {
                 <div className="page-cols">
                     <div className="page-col__2">
                         <div className="page-img">
-                            <Image src={imgTwo} alt="about" width="400" height="400"/>
+                            <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-2.png`} alt="about" />
                         </div>
                     </div>
                     <div className="page-col__2">
@@ -92,14 +92,14 @@ const About = () => {
                     </div>
                     <div className="page-col__2">
                         <div className="page-img">
-                            <Image src={imgThree} alt="about" width="400" height="400"/>
+                            <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-3.png`} alt="about" />
                         </div>
                     </div>
                 </div>
                 <div className="page-cols">
                     <div className="page-col__2">
                         <div className="page-img">
-                            <Image src={imgFour} alt="about" width="400" height="400"/>
+                            <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-4.png`} alt="about" />
                         </div>
                     </div>
                     <div className="page-col__2">

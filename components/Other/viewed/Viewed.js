@@ -7,11 +7,12 @@ const Viewed = () => {
     const cartItems = useSelector((store) => store.viewed.items);
     const [loading, setLoading] = useState(false);
     const [viewedItems, setViewedItems] = useState([]);
+    const [infiniteBool, setInfiniteBool] = useState(true);
 
     const settingsSlider = {
         dots: true,
         arrows: false,
-        infinite: true,
+        infinite: infiniteBool,
         slidesToShow: 4,
         responsive: [
             {
@@ -58,13 +59,18 @@ const Viewed = () => {
         setLoading(false);
     };
 
-    const renderContent = () => {
+    const RenderContent = () => {
         if(viewedItems.length) {
             if (!loading) {
+                viewedItems.length <= 4 ? setInfiniteBool(false) : setInfiniteBool(true);
+
                 return (
-                    <Slider className="viewed-items" {...settingsSlider}>
-                        {viewedItems.map(el => <ProductCard key={el.id} data={el}/>)}
-                    </Slider>
+                    <div className="viewed">
+                        <div className="viewed-title">Просмотренное</div>
+                        <Slider className="viewed-items" {...settingsSlider}>
+                            {viewedItems.map(el => <ProductCard key={el.id} data={el}/>)}
+                        </Slider>
+                    </div>
                 )
             }
         }
@@ -75,10 +81,7 @@ const Viewed = () => {
     }, [cartItems]);
 
     return (
-        <div className="viewed">
-            <div className="viewed-title">Просмотренное</div>
-            {renderContent()}
-        </div>
+        <RenderContent />
     );
 };
 
