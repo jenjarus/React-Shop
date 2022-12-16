@@ -1,0 +1,52 @@
+.main-block {
+  padding: 50px 0 200px;
+
+  @media(max-width: 767px) {
+    padding: 50px 0;
+    background: $red_color;
+    color: #fff;
+  }
+
+  &__wrapper {
+    max-width: 900px;
+    position: relative;
+    margin: 0 auto;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 400px;
+      height: 210px;
+      position: absolute;
+      bottom: -75px;
+      right: -70px;
+      background: $red_color;
+      z-index: -1;
+
+      @media(max-width: 767px) {
+        content: normal;
+      }
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      bottom: -120px;
+      right: 275px;
+      background: $dark_red_color;
+      z-index: -2;
+
+      @media(max-width: 767px) {
+        content: normal;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}

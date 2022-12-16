@@ -66,7 +66,12 @@ const About = () => {
                             blandit eget.</p>
                     </div>
                 </div>
-                <div className="page-cols">
+                <div className="page-cols page-cols--revers">
+                    <div className="page-col__2">
+                        <div className="page-img">
+                            <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-3.png`} alt="about" />
+                        </div>
+                    </div>
                     <div className="page-col__2">
                         <p className="page-text">Quisque congue bibendum urna, ac maximus justo dignissim sit amet. Cras
                             feugiat enim ut elit
@@ -89,11 +94,6 @@ const About = () => {
                             hendrerit ultricies dolor. Cras vitae semper lacus. Quisque rhoncus, nunc a finibus feugiat,
                             dui
                             tortor eleifend diam, eu lobortis nunc massa eget neque.</p>
-                    </div>
-                    <div className="page-col__2">
-                        <div className="page-img">
-                            <img src={`${process.env.NEXT_PUBLIC_FAVICON}/images/about/about-3.png`} alt="about" />
-                        </div>
                     </div>
                 </div>
                 <div className="page-cols">

@@ -1,0 +1,55 @@
+.main-line {
+  width: 150vw;
+  height: 80px;
+  position: relative;
+  background: #e5be01;
+  overflow: hidden;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    left: 0;
+    background: $black_color;
+  }
+
+  &:before {
+    top: 8px;
+  }
+
+  &:after {
+    bottom: 8px;
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    animation: main-line 60s linear infinite;
+  }
+
+  &__text {
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 24px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    svg {
+      vertical-align: middle;
+    }
+  }
+}
+
+@keyframes main-line {
+  from {
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  to {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}

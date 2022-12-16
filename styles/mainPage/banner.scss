@@ -1,7 +1,6 @@
 .main-banner {
   position: relative;
-  height: 600px;
-  max-height: 100vh;
+  height: calc(100vh - 147px);
   z-index: 0;
 
   &:before {

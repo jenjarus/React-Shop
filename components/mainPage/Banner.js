@@ -11,7 +11,7 @@ const Banner = () => {
                     <div className="main-banner__title">Пей пиво - местного разлива</div>
                     <div className="main-banner__subtitle">Только в <span className="main-banner__black">Черное</span> <span className="main-banner__red">красное</span></div>
                     <div className="main-banner__button">
-                        <   Link href="/catalog" className="btn main-page--main-page">Перейти в каталог</Link>
+                        <Link href="/catalog" className="btn main-page--main-page">Перейти в каталог</Link>
                     </div>
                 </div>
             </div>
