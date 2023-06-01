@@ -47,27 +47,29 @@ const FilterPrice = () => {
                     <Arrow/>
                 </span>
             </div>
-            <div className="filter__items filter__items--price">
-                <span className="filter__items-text">от</span>
-                <div className="form-input">
-                    <input type="number" value={minPrice} onChange={onChangeMin} />
+            <div className="filter__items">
+                <div className="filter__items-range">
+                    <span className="filter__items-text">от</span>
+                    <div className="form-input">
+                        <input type="number" value={minPrice} onChange={onChangeMin} />
+                    </div>
+                    <span className="filter__items-text">до</span>
+                    <div className="form-input">
+                        <input type="number" value={maxPrice} onChange={onChangeMax} />
+                    </div>
                 </div>
-                <span className="filter__items-text">до</span>
-                <div className="form-input">
-                    <input type="number" value={maxPrice} onChange={onChangeMax} />
-                </div>
+                <ReactSlider
+                    className="range-slider"
+                    thumbClassName="range-slider__dots"
+                    trackClassName="range-slider__track"
+                    min={minInit}
+                    max={maxInit}
+                    value={[minPrice, maxPrice]}
+                    pearling
+                    minDistance={1}
+                    onChange={onChangeRange}
+                />
             </div>
-            <ReactSlider
-                className="range-slider"
-                thumbClassName="range-slider__dots"
-                trackClassName="range-slider__track"
-                min={minInit}
-                max={maxInit}
-                value={[minPrice, maxPrice]}
-                pearling
-                minDistance={1}
-                onChange={onChangeRange}
-            />
         </div>
     )
 };

@@ -77,7 +77,7 @@
   &__items {
     display: none;
 
-    &--price {
+    &-range {
       & .form-input {
         margin: 10px;
 
@@ -99,7 +99,7 @@
   &.open &__items {
     display: block;
 
-    &--price {
+    &-range {
       display: flex;
       align-items: center;
     }

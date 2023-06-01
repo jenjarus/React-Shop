@@ -18,7 +18,7 @@ const ProductPage = () => {
     const dispatch = useDispatch();
     const [productData, setProductData] = useState([]);
     const favoriteItems = useSelector((store) => store.favorite.items);
-    const checkFavoriteItem = favoriteItems.find((el) => el === id);
+    const checkFavoriteItem = favoriteItems.find((el) => el === +id);
     const [count, setCount] = useState(1);
     const [openModal, setOpenModal] = useState(false);
     const [flagFavorite, setFlagFavorite] = useState(!!checkFavoriteItem);

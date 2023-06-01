@@ -14,6 +14,7 @@ const Viewed = () => {
         arrows: false,
         infinite: infiniteBool,
         slidesToShow: 4,
+        slidesToScroll: 4,
         responsive: [
             {
                 breakpoint: 992,
