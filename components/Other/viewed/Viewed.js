@@ -46,11 +46,11 @@ const Viewed = () => {
 
         const dataItems = await Promise.all(items.map(async item => {
             try {
-                const url = `https://api.punkapi.com/v2/beers/${item}`;
+                const url = `https://punkapi.online/v3/beers/${item}`;
                 const apiResponse = await fetch(url);
                 const data = await apiResponse.json();
 
-                return data[0];
+                return data;
             } catch (err) {
                 console.log(err);
             }

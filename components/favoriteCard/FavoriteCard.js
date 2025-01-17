@@ -21,7 +21,7 @@ const FavoriteCard = ({data}) => {
                 </div>
                 <Link href={`/catalog/${data.id}`} className="favorite-item__link">
                     <div className="favorite-item__image">
-                        <img src={data.image_url} alt="img_favorite"/>
+                        <img src={`https://punkapi.online/v3/images/${data.image}`} alt="img_favorite"/>
                     </div>
                     <div className="favorite-item__name">{data.name}</div>
                     <div className="favorite-item__price">{data.price} $</div>

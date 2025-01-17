@@ -29,11 +29,11 @@ const ProductPage = () => {
         setLoading(true);
 
         try {
-            const url = `https://api.punkapi.com/v2/beers/${id}`;
+            const url = `https://punkapi.online/v3/beers/${id}`;
             const apiResponse = await fetch(url);
             const data = await apiResponse.json();
 
-            setProductData(data[0]);
+            setProductData(data);
             dispatch(setProductToViewed(id));
             setLoading(false);
         } catch (err) {
@@ -106,7 +106,7 @@ const ProductPage = () => {
                         <div className="page-cols">
                             <div className="page-col__2">
                                 <div className="product-image">
-                                    <img src={productData.image_url} alt={productData.name}/>
+                                    <img src={`https://punkapi.online/v3/images/${productData.image}`} alt={productData.name}/>
                                 </div>
                             </div>
                             <div className="page-col__2">
@@ -183,7 +183,7 @@ const ProductPage = () => {
 export default ProductPage;
 
 export async function getStaticProps({ params }) {
-    const res = await fetch(`https://api.punkapi.com/v2/beers/${params.id}`);
+    const res = await fetch(`https://punkapi.online/v3/beers/${params.id}`);
     const data = await res.json();
 
     return {
@@ -192,7 +192,7 @@ export async function getStaticProps({ params }) {
 }
 
 export const getStaticPaths = async () => {
-    const res = await fetch(`https://api.punkapi.com/v2/beers/`);
+    const res = await fetch(`https://punkapi.online/v3/beers?page=1&per_page=30`);
     const data = await res.json();
 
     const paths = data.map((item) => ({

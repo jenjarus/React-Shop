@@ -16,14 +16,14 @@ const Favorite = () => {
 
         const dataItems = await Promise.all(items.map(async item => {
             try {
-                const url = `https://api.punkapi.com/v2/beers/${item}`;
+                const url = `https://punkapi.online/v3/beers/${item}`;
                 const apiResponse = await fetch(url);
                 const data = await apiResponse.json();
                 const dataObject = {
-                    id: data[0].id,
-                    name: data[0].name,
-                    price: data[0].ibu,
-                    image_url: data[0].image_url,
+                    id: data.id,
+                    name: data.name,
+                    price: data.ibu,
+                    image: data.image,
                 };
 
                 return dataObject;

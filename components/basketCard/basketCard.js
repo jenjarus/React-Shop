@@ -22,7 +22,7 @@ const BasketCard = ({data}) => {
             <div className="basket-item__wrapper">
                 <div className="basket-item__image">
                     <Link href={`/catalog/${data.id}`} className="basket-item__link">
-                        <img src={data.image_url} alt="img_catalog"/>
+                        <img src={`https://punkapi.online/v3/images/${data.image}`} alt="img_catalog"/>
                     </Link>
                 </div>
                 <div className="basket-item__name">

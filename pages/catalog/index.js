@@ -84,7 +84,7 @@ const Catalog = () => {
         setLoading(true);
 
         try {
-            const url = `https://api.punkapi.com/v2/beers?page=1&per_page=20`;
+            const url = `https://punkapi.online/v3/beers?page=1&per_page=30`;
             const apiResponse = await fetch(url);
             const data = await apiResponse.json();
 

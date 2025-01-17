@@ -46,11 +46,11 @@ const TopProduct = () => {
 
         const dataItems = await Promise.all(items.map(async item => {
             try {
-                const url = `https://api.punkapi.com/v2/beers/${item}`;
+                const url = `https://punkapi.online/v3/beers/${item}`;
                 const apiResponse = await fetch(url);
                 const data = await apiResponse.json();
 
-                return data[0];
+                return data;
             } catch (err) {
                 console.log(err);
             }
@@ -71,7 +71,8 @@ const TopProduct = () => {
                             <div className="top-product__title">Клиенты выбирают</div>
                             <Slider className="top-product__items" {...settingsSlider}>
                                 {topItems.map(el => <ProductCard key={el.id} data={el}/>)}
-                            </Slider></div>
+                            </Slider>
+                        </div>
                     </div>
                 )
             }

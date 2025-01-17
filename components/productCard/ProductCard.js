@@ -69,7 +69,7 @@ const ProductCard = ({data}) => {
                     </div>
                     <Link href={`/catalog/${data.id}`} className="catalog-item__link">
                         <div className="catalog-item__image">
-                            <img src={data.image_url} alt="img_catalog"/>
+                            <img src={`https://punkapi.online/v3/images/${data.image}`} alt="img_catalog"/>
                         </div>
                         <div className="catalog-item__name">{data.name}</div>
                         <div className="catalog-item__price">{data.ibu} $</div>

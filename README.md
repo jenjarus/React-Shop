@@ -1,6 +1,6 @@
 # Онлайн-магазин "Черное красное"
 
-Сайт сделан с использованием фреймворка NextJs. Данные взяты из API [https://punkapi.com/](https://punkapi.com/)
+Сайт сделан с использованием фреймворка NextJs. Данные взяты из API ~~[https://punkapi.com/](https://punkapi.com/)~~ << (api больше не доступно) [https://github.com/alxiw/punkapi](https://github.com/alxiw/punkapi)
 
 Сайт доступен по адресу [https://jenjarus.github.io/React-Shop](https://jenjarus.github.io/React-Shop)
 
